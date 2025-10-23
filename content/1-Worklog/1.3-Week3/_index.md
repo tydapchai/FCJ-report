@@ -5,53 +5,78 @@ weight: 1
 chapter: false
 pre: " <b> 1.3. </b> "
 ---
-{{% notice warning %}} 
-⚠️ **Note:** The following information is for reference purposes only. Please **do not copy verbatim** for your own report, including this warning.
-{{% /notice %}}
 
 
 ### Week 3 Objectives:
 
-* Connect and get acquainted with members of First Cloud Journey.
-* Understand basic AWS services, how to use the console & CLI.
+* Deep dive into AWS Compute services: EC2, Load Balancing, and Auto-Scaling
+* Understand AWS Database models and migration strategies
+* Learn about modern compute evolution: Containers and Serverless
+* Master EC2 instance configuration and connection methods
 
 ### Tasks to be carried out this week:
 | Day | Task                                                                                                                                                                                                   | Start Date | Completion Date | Reference Material                        |
 | --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------- | --------------- | ----------------------------------------- |
-| 2   | - Get acquainted with FCJ members <br> - Read and take note of internship unit rules and regulations                                                                                                   | 08/11/2025 | 08/11/2025      |
-| 3   | - Learn about AWS and its types of services <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                              | 08/12/2025 | 08/12/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Create AWS Free Tier account <br> - Learn about AWS Console & AWS CLI <br> - **Practice:** <br>&emsp; + Create AWS account <br>&emsp; + Install & configure AWS CLI <br> &emsp; + How to use AWS CLI | 08/13/2025 | 08/13/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Learn basic EC2: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - SSH connection methods to EC2 <br> - Learn about Elastic IP   <br>                            | 08/14/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Practice:** <br>&emsp; + Launch an EC2 instance <br>&emsp; + Connect via SSH <br>&emsp; + Attach an EBS volume                                                                                     | 08/15/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| 2   | - **AWS EC2 Overview:** <br>&emsp; + Instance categories (General Purpose, Compute Optimized, Memory Optimized) <br>&emsp; + Key configuration components (AMI, Key Pair, VPC, Security Group, EBS) <br>&emsp; + Connection methods (SSH, Session Manager, EC2 Instance Connect) | 21/09/2025 | 21/09/2025      | AWS Documentation |
+| 3   | - **Load Balancing & Auto-Scaling:** <br>&emsp; + Load Balancer types (ALB, NLB, CLB, GWLB) <br>&emsp; + How load balancing works across target groups <br>&emsp; + EC2 Auto Scaling concepts and benefits <br>&emsp; + Integration between Load Balancing and Auto-Scaling | 22/09/2025 | 22/09/2025      | AWS Documentation |
+| 4   | - **Evolution of Compute:** <br>&emsp; + Traditional compute vs Modern compute needs <br>&emsp; + Container services (ECS, EKS) <br>&emsp; + Serverless compute (Lambda, Fargate) <br>&emsp; + Containers vs Serverless comparison | 23/09/2025 | 23/09/2025      | AWS Documentation |
+| 5   | - **AWS Database Models:** <br>&emsp; + Relational databases (RDS, Aurora) <br>&emsp; + NoSQL databases (DynamoDB, DocumentDB) <br>&emsp; + Memory-based databases (MemoryDB for Redis) <br>&emsp; + EC2-hosted databases vs AWS-managed | 24/09/2025 | 26/09/2025     | AWS Documentation |
+| 6   | - **Database Migration:** <br>&emsp; + Migration phases and strategies <br>&emsp; + AWS migration tools (DMS, Snow Family, DataSync, SCT) <br>&emsp; + Choosing the right migration tool for different scenarios | 08/15/2025 | 08/15/2025      | AWS Documentation |
+
+
+### How Load Balancing works
+
+1. Users send requests
+2. Requests hit the load balancer
+3. The primary target group is served first by the Application Load Balancer
+4. When demand increases, the load balancer activates the secondary target group and distributes traffic across all instances
+
+![How load balancing works](/images/week3-worklog/load-balancing.png)
+
+
+### How Auto-Scaling works
+
+1. Users send requests
+2. Requests are routed to the EC2 Auto Scaling service
+3. The service routes requests to active EC2 instances
+4. If demand increases, new EC2 instances are added to handle the additional load
+5. As demand decreases, the newly added instances are terminated
+
+![How auto-scaling works](/images/week3-worklog/auto-scaling.png)
 
 
 ### Week 3 Achievements:
 
-* Understood what AWS is and mastered the basic service groups: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
+* **Mastered AWS EC2 Fundamentals:**
+  * Understood EC2 instance categories: General Purpose, Compute Optimized, Memory Optimized, Storage Optimized, Accelerated Computing, and HPC
+  * Learned key configuration components: AMI, Key Pairs, VPC, Security Groups, and EBS volumes
+  * Gained proficiency in EC2 connection methods: SSH Client, AWS Session Manager, and EC2 Instance Connect
 
-* Successfully created and configured an AWS Free Tier account.
+* **Comprehensive Understanding of Load Balancing & Auto-Scaling:**
+  * Mastered different Load Balancer types: ALB (Layer 7), NLB (Layer 4), CLB (Legacy), and GWLB (Virtual Appliances)
+  * Understood how load balancing distributes traffic across primary and secondary target groups
+  * Learned EC2 Auto Scaling concepts and how it automatically adjusts compute capacity
+  * Recognized the integration between Load Balancing and Auto-Scaling for resilient architectures
 
-* Became familiar with the AWS Management Console and learned how to find, access, and use services via the web interface.
+* **Evolution of Compute Services:**
+  * Distinguished between traditional compute (EC2) and modern compute needs
+  * Explored container services: Amazon ECS (AWS-native) and Amazon EKS (Kubernetes-managed)
+  * Understood serverless compute: AWS Lambda (function-based) and AWS Fargate (container-based)
+  * Analyzed the trade-offs between containers and serverless compute for different use cases
 
-* Installed and configured AWS CLI on the computer, including:
-  * Access Key
-  * Secret Key
-  * Default Region
-  * ...
+* **AWS Database Models Expertise:**
+  * **Relational Databases:** Mastered Amazon RDS and Aurora for structured data and complex SQL queries
+  * **NoSQL Databases:** Learned DynamoDB (key-value store) and DocumentDB (MongoDB-compatible) for flexible schemas
+  * **Memory-Based Databases:** Understood MemoryDB for Redis for ultra-fast data retrieval and caching
+  * **EC2-Hosted vs AWS-Managed:** Evaluated trade-offs between control and automation
 
-* Used AWS CLI to perform basic operations such as:
+* **Database Migration Strategies:**
+  * Understood migration phases: Assessment, Preparation, Execution, Validation, and Optimization
+  * Learned AWS migration tools: DMS (online migration), Snow Family (offline transfer), DataSync (automated sync), and SCT (schema conversion)
+  * Developed ability to choose appropriate migration tools based on specific scenarios and requirements
 
-  * Check account & configuration information
-  * Retrieve the list of regions
-  * View EC2 service
-  * Create and manage key pairs
-  * Check information about running services
-  * ...
-
-* Acquired the ability to connect between the web interface and CLI to manage AWS resources in parallel.
-* ...
+* **Key Insights Gained:**
+  * EC2 provides flexible, scalable virtual machines integrated with AWS networking, storage, and security
+  * Load Balancers handle traffic distribution while Auto-Scaling handles resource elasticity
+  * Containers suit predictable workloads needing control, while Serverless excels in event-driven scenarios
+  * AWS offers multiple database models enabling optimal balance between control, scalability, and automation
