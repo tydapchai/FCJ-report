@@ -135,7 +135,6 @@ pre: " <b> 1.4. </b> "
 
 ![Route tables](/images/week4-worklog/route-tables.png)
 
-![Network gateway](/images/week4-worklog/network-gateway.png)
 
 #### Private Connectivity
 
