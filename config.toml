@@ -1,6 +1,8 @@
 baseURL = "https://tydapchai.github.io/FCJ-report/"
 relativeURLs = true
 canonifyURLs = true
+defaultContentLanguage = "en"
+defaultContentLanguageInSubdir = false
 
 # Change the default theme to be use when building the site with Hugo
 theme = "hugo-theme-learn"
