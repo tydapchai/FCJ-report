@@ -12,42 +12,54 @@ pre: " <b> 1.5. </b> "
 
 ### Week 5 Objectives:
 
-* Connect and get acquainted with members of First Cloud Journey.
-* Understand basic AWS services, how to use the console & CLI.
+* Learn about AWS Storage solutions and their use cases
+* Understand AWS AI/ML services and capabilities
+* Study AWS Analytics services and data processing
+* Explore AWS secondary services for enhanced functionality
 
 ### Tasks to be carried out this week:
 | Day | Task                                                                                                                                                                                                   | Start Date | Completion Date | Reference Material                        |
 | --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------- | --------------- | ----------------------------------------- |
-| 2   | - Get acquainted with FCJ members <br> - Read and take note of internship unit rules and regulations                                                                                                   | 08/11/2025 | 08/11/2025      |
-| 3   | - Learn about AWS and its types of services <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                              | 08/12/2025 | 08/12/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Create AWS Free Tier account <br> - Learn about AWS Console & AWS CLI <br> - **Practice:** <br>&emsp; + Create AWS account <br>&emsp; + Install & configure AWS CLI <br> &emsp; + How to use AWS CLI | 08/13/2025 | 08/13/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Learn basic EC2: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - SSH connection methods to EC2 <br> - Learn about Elastic IP   <br>                            | 08/14/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Practice:** <br>&emsp; + Launch an EC2 instance <br>&emsp; + Connect via SSH <br>&emsp; + Attach an EBS volume                                                                                     | 08/15/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| 1   | **AWS Storage Solutions:** <br>&emsp; + Object Storage (S3) <br>&emsp; + Block Storage (EBS) <br>&emsp; + File Storage (EFS) <br>&emsp; + Cache Storage (ElastiCache) <br>&emsp; + Lifecycle Policies & AWS Backup | 10/23/2025 | 10/23/2025      | AWS Documentation |
+| 2   | **AI/ML Services:** <br>&emsp; + AI Services (Pre-built models) <br>&emsp; + ML Services (SageMaker, CodeWhisperer) <br>&emsp; + ML Frameworks & Infrastructure <br>&emsp; + AWS ML Workflow | 10/23/2025 | 10/23/2025      | AWS Documentation |
+| 3   | **Analytics Services:** <br>&emsp; + Amazon Athena (Serverless querying) <br>&emsp; + QuickSight (BI) <br>&emsp; + Kinesis (Streaming) <br>&emsp; + Redshift (Data Warehouse) <br>&emsp; + Glue (ETL) | 10/24/2025 | 10/24/2025      | AWS Documentation |
+| 4   | **Secondary Services:** <br>&emsp; + Application Integration (EventBridge, SQS, SNS) <br>&emsp; + Business Applications (Connect, SES) <br>&emsp; + Developer Tools (CodePipeline, CodeCommit) | 10/24/2025 | 10/24/2025      | AWS Documentation |
+| 5   | **Practical Exercises:** <br>&emsp; + Set up S3 bucket with lifecycle policies <br>&emsp; + Create ML model using SageMaker <br>&emsp; + Build data pipeline with Kinesis and Glue <br>&emsp; + Implement event-driven architecture using EventBridge | 10/25/2025 | 10/25/2025      | AWS Documentation |
 
 
 ### Week 5 Achievements:
 
-* Understood what AWS is and mastered the basic service groups: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
+* Mastered AWS Storage Solutions:
+  * Understanding of S3, EBS, EFS, and ElastiCache
+  * Storage classes and their use cases
+  * Data lifecycle management and backup strategies
+  * Performance optimization and cost efficiency
 
-* Successfully created and configured an AWS Free Tier account.
+* Gained knowledge of AWS AI/ML services:
+  * Pre-built AI services and their applications
+  * Custom model development with SageMaker
+  * ML frameworks and infrastructure options
+  * End-to-end ML workflow implementation
 
-* Became familiar with the AWS Management Console and learned how to find, access, and use services via the web interface.
+* Explored AWS Analytics services:
+  * Serverless query capabilities with Athena
+  * Business intelligence with QuickSight
+  * Real-time data streaming with Kinesis
+  * Data warehousing with Redshift
+  * ETL processes with AWS Glue
 
-* Installed and configured AWS CLI on the computer, including:
-  * Access Key
-  * Secret Key
-  * Default Region
-  * ...
+* Learned about AWS secondary services:
+  * Application integration patterns
+  * Business application implementations
+  * Developer tools and CI/CD pipelines
+  * Advanced intelligence services
 
-* Used AWS CLI to perform basic operations such as:
-
-  * Check account & configuration information
-  * Retrieve the list of regions
+* Practical implementation skills:
+  * Storage lifecycle management
+  * Machine learning model deployment
+  * Data pipeline creation
+  * Event-driven architectures
+  * Security and compliance considerations
   * View EC2 service
   * Create and manage key pairs
   * Check information about running services
