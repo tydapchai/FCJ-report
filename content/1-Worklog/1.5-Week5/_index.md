@@ -16,11 +16,11 @@ pre: " <b> 1.5. </b> "
 ### Tasks to be carried out this week:
 | Day | Task                                                                                                                                                                                                   | Start Date | Completion Date | Reference Material                        |
 | --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------- | --------------- | ----------------------------------------- |
-| 1   | **AWS Storage Solutions:** <br>&emsp; + Object Storage (S3) <br>&emsp; + Block Storage (EBS) <br>&emsp; + File Storage (EFS) <br>&emsp; + Cache Storage (ElastiCache) <br>&emsp; + Lifecycle Policies & AWS Backup | 10/23/2025 | 10/23/2025      | AWS Documentation |
-| 2   | **AI/ML Services:** <br>&emsp; + AI Services (Pre-built models) <br>&emsp; + ML Services (SageMaker, CodeWhisperer) <br>&emsp; + ML Frameworks & Infrastructure <br>&emsp; + AWS ML Workflow | 10/23/2025 | 10/23/2025      | AWS Documentation |
-| 3   | **Analytics Services:** <br>&emsp; + Amazon Athena (Serverless querying) <br>&emsp; + QuickSight (BI) <br>&emsp; + Kinesis (Streaming) <br>&emsp; + Redshift (Data Warehouse) <br>&emsp; + Glue (ETL) | 10/24/2025 | 10/24/2025      | AWS Documentation |
-| 4   | **Secondary Services:** <br>&emsp; + Application Integration (EventBridge, SQS, SNS) <br>&emsp; + Business Applications (Connect, SES) <br>&emsp; + Developer Tools (CodePipeline, CodeCommit) | 10/24/2025 | 10/24/2025      | AWS Documentation |
-| 5   | **Practical Exercises:** <br>&emsp; + Set up S3 bucket with lifecycle policies <br>&emsp; + Create ML model using SageMaker <br>&emsp; + Build data pipeline with Kinesis and Glue <br>&emsp; + Implement event-driven architecture using EventBridge | 10/25/2025 | 10/25/2025      | AWS Documentation |
+| 1   | **AWS Storage Solutions:** <br>&emsp; + Object Storage (S3) <br>&emsp; + Block Storage (EBS) <br>&emsp; + File Storage (EFS) <br>&emsp; + Cache Storage (ElastiCache) <br>&emsp; + Lifecycle Policies & AWS Backup | 05/10/2025 | 05/10/2025      | AWS Documentation |
+| 2   | **AI/ML Services:** <br>&emsp; + AI Services (Pre-built models) <br>&emsp; + ML Services (SageMaker, CodeWhisperer) <br>&emsp; + ML Frameworks & Infrastructure <br>&emsp; + AWS ML Workflow | 06/10/2025 | 07/10/2025      | AWS Documentation |
+| 3   | **Analytics Services:** <br>&emsp; + Amazon Athena (Serverless querying) <br>&emsp; + QuickSight (BI) <br>&emsp; + Kinesis (Streaming) <br>&emsp; + Redshift (Data Warehouse) <br>&emsp; + Glue (ETL) | 07/10/2025 | 08/10/2025      | AWS Documentation |
+| 4   | **Secondary Services:** <br>&emsp; + Application Integration (EventBridge, SQS, SNS) <br>&emsp; + Business Applications (Connect, SES) <br>&emsp; + Developer Tools (CodePipeline, CodeCommit) | 10/10/2025 | 10/10/2025      | AWS Documentation |
+| 5   | **Practical Exercises:** <br>&emsp; + Set up S3 bucket with lifecycle policies <br>&emsp; + Create ML model using SageMaker <br>&emsp; + Build data pipeline with Kinesis and Glue <br>&emsp; + Implement event-driven architecture using EventBridge | 10/10/2025 | 10/10/2025      | AWS Documentation |
 
 
 ### Week 5 Achievements:

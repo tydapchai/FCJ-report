@@ -14,11 +14,11 @@ pre: " <b> 1.4. </b> "
 ### Tasks to be carried out this week:
 | Day | Task | Start Date | Completion Date | Reference Material |
 | --- | --- | ---------- | --------------- | ------------------ |
-| 1   | Research and outline database migration objectives and constraints | 10/22/2025 | 10/22/2025 | AWS Documentation |
-| 2   | Study AWS Database Migration Services: DMS, SCT, Snow Family, DataSync; map use cases | 10/22/2025 | 10/22/2025 | AWS Documentation |
-| 3   | Document migration phases: assessment, preparation, execution, validation, optimization | 10/22/2025 | 10/22/2025 | AWS Documentation |
-| 4   | Study AWS Network Services: VPC, security layers, VPC Endpoints/PrivateLink, VPN/Direct Connect | 10/22/2025 | 10/22/2025 | AWS Documentation |
-| 5   | Summarize Route 53 and CloudFront roles; create diagrams and notes | 10/22/2025 | 10/22/2025 | AWS Documentation |
+| 1   | Research and outline database migration objectives and constraints | 29/09/2025 | 29/09/2025 | AWS Documentation |
+| 2   | Study AWS Database Migration Services: DMS, SCT, Snow Family, DataSync; map use cases | 29/09/2025 | 29/09/2025 | AWS Documentation |
+| 3   | Document migration phases: assessment, preparation, execution, validation, optimization | 29/09/2025 | 29/09/2025 | AWS Documentation |
+| 4   | Study AWS Network Services: VPC, security layers, VPC Endpoints/PrivateLink, VPN/Direct Connect | 30/09/2025 | 03/10/2025 | AWS Documentation |
+| 5   | Summarize Route 53 and CloudFront roles; create diagrams and notes | 03/10/2025 | 03/10/2025 | AWS Documentation |
 
 
 ### Week 4 Achievements:
@@ -49,7 +49,6 @@ pre: " <b> 1.4. </b> "
   * DataSync: Automated, high‑speed ongoing data syncs (S3/EFS/EBS)
   * SCT: Schema conversion and assessment between database engines
 
-![Database Migration Services in AWS](/images/week4-worklog/database-migration.png)
 
 
 #### What is Database Migration?
@@ -103,7 +102,6 @@ pre: " <b> 1.4. </b> "
 * DNS: Amazon Route 53 for domain management and health checks
 * CDN: CloudFront for global caching, performance, and DDoS protections
 
-![AWS Network Services Overview](/images/week4-worklog/network-services.png)
 
 #### Purpose
 

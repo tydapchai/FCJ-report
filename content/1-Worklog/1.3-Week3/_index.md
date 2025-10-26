@@ -21,7 +21,7 @@ pre: " <b> 1.3. </b> "
 | 3   | - **Load Balancing & Auto-Scaling:** <br>&emsp; + Load Balancer types (ALB, NLB, CLB, GWLB) <br>&emsp; + How load balancing works across target groups <br>&emsp; + EC2 Auto Scaling concepts and benefits <br>&emsp; + Integration between Load Balancing and Auto-Scaling | 22/09/2025 | 22/09/2025      | AWS Documentation |
 | 4   | - **Evolution of Compute:** <br>&emsp; + Traditional compute vs Modern compute needs <br>&emsp; + Container services (ECS, EKS) <br>&emsp; + Serverless compute (Lambda, Fargate) <br>&emsp; + Containers vs Serverless comparison | 23/09/2025 | 23/09/2025      | AWS Documentation |
 | 5   | - **AWS Database Models:** <br>&emsp; + Relational databases (RDS, Aurora) <br>&emsp; + NoSQL databases (DynamoDB, DocumentDB) <br>&emsp; + Memory-based databases (MemoryDB for Redis) <br>&emsp; + EC2-hosted databases vs AWS-managed | 24/09/2025 | 26/09/2025     | AWS Documentation |
-| 6   | - **Database Migration:** <br>&emsp; + Migration phases and strategies <br>&emsp; + AWS migration tools (DMS, Snow Family, DataSync, SCT) <br>&emsp; + Choosing the right migration tool for different scenarios | 08/15/2025 | 08/15/2025      | AWS Documentation |
+| 6   | - **Database Migration:** <br>&emsp; + Migration phases and strategies <br>&emsp; + AWS migration tools (DMS, Snow Family, DataSync, SCT) <br>&emsp; + Choosing the right migration tool for different scenarios | 26/09/2025 | 27/09/2025      | AWS Documentation |
 
 
 ### How Load Balancing works
