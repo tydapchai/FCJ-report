@@ -107,8 +107,8 @@ Attending **Vietnam Cloud Day 2025: Ho Chi Minh City Connect Edition for Builder
 #### Event Photos
 
 ![Some event pictures](/images/event-1/event1.png) 
-![Some event pictures](/images/tea-break.png) 
-![Some event pictures](/images/delicious-food.png) 
-![Some event pictures](/images/hall.png) 
+![Some event pictures](/images/event-1/tea-break.png) 
+![Some event pictures](/images/event-1/delicious-food.png) 
+![Some event pictures](/images/event-1/hall.png) 
 
 > Overall, Vietnam Cloud Day 2025 empowered me with knowledge and tools to drive cloud innovation and transformation for Vietnam’s future.
