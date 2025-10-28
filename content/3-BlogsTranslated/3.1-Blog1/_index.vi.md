@@ -6,8 +6,10 @@ chapter: false
 pre: " <b> 3.1. </b> "
 ---
 {{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
+⚠️ **Lưu ý:** Thông tin dưới đây chỉ để tham khảo. Vui lòng **không sao chép nguyên văn** cho báo cáo của bạn, bao gồm cả cảnh báo này.
 {{% /notice %}}
+
+# Mở Khóa Các Mô Hình AI Thương Mại trong AWS GovCloud (US): Truy Cập Bảo Mật Xuyên Phân Vùng với Amazon Bedrock
 
 # Bắt đầu với healthcare data lakes: Sử dụng microservices
 
