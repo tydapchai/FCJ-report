@@ -1,10 +1,3 @@
----
-title: "Blog 1"
-date: "2025-09-11"
-weight: 1
-chapter: false
-pre: " <b> 3.1. </b> "
----
 
 ## [AWS Public Sector Blog](https://aws.amazon.com/blogs/publicsector/)
 
@@ -214,27 +207,3 @@ Vin là kiến trúc sư giải pháp cấp cao tại AWS, nơi anh hỗ trợ c
    </td>
   </tr>
 </table>
-### 1. AWS CloudFormation Cross-Stack References
-Example *outputs* in the core microservice:
-```yaml
-Outputs:
-  Bucket:
-    Value: !Ref Bucket
-    Export:
-      Name: !Sub ${AWS::StackName}-Bucket
-  ArtifactBucket:
-    Value: !Ref ArtifactBucket
-    Export:
-      Name: !Sub ${AWS::StackName}-ArtifactBucket
-  Topic:
-    Value: !Ref Topic
-    Export:
-      Name: !Sub ${AWS::StackName}-Topic
-  Catalog:
-    Value: !Ref Catalog
-    Export:
-      Name: !Sub ${AWS::StackName}-Catalog
-  CatalogArn:
-    Value: !GetAtt Catalog.Arn
-    Export:
-      Name: !Sub ${AWS::StackName}-CatalogArn
