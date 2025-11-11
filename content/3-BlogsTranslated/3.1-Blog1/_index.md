@@ -5,188 +5,215 @@ weight: 1
 chapter: false
 pre: " <b> 3.1. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Note:** The information below is for reference purposes only. Please **do not copy verbatim** for your report, including this warning.
-{{% /notice %}}
 
-# Unlocking Commercial AI Models in AWS GovCloud (US): Secure Cross-Partition Access with Amazon Bedrock
+## [AWS Public Sector Blog](https://aws.amazon.com/blogs/publicsector/)
 
-In this blog post, we present three solutions that enable workloads in AWS GovCloud (US) to securely connect to the commercial partition of Amazon Web Services (AWS) for inference with Amazon Bedrock. Each approach has its own strengths and trade-offs, and by the end of this post, you'll be able to determine which option best suits your organization.
+**Mở Khóa Các Mô Hình AI Thương Mại trong AWS GovCloud (US): Truy Cập Bảo Mật Xuyên Phân Vùng với Amazon Bedrock**
 
-Generative AI is evolving rapidly, with new foundation models (FMs) and capabilities being released regularly. These capabilities are introduced first in the AWS commercial partition. For organizations operating in sensitive, highly regulated environments, the challenge is keeping pace with this innovation while rapidly prototyping, gathering customer feedback, and maturing new capabilities into mission-ready solutions.
+**bởi **Tyler Replogle, Doug Hairfield, Michael Pitcher, and Vin Minichino on 30 SEP 2025 in [Amazon Bedrock](https://aws.amazon.com/blogs/publicsector/category/artificial-intelligence/amazon-machine-learning/amazon-bedrock/), [Artificial Intelligence](https://aws.amazon.com/blogs/publicsector/category/artificial-intelligence/), [AWS GovCloud (US)](https://aws.amazon.com/blogs/publicsector/category/public-sector/government/aws-govcloud-us/), [Generative AI](https://aws.amazon.com/blogs/publicsector/category/artificial-intelligence/generative-ai/), [Government](https://aws.amazon.com/blogs/publicsector/category/public-sector/government/), [Public Sector](https://aws.amazon.com/blogs/publicsector/category/public-sector/), [Technical How-to](https://aws.amazon.com/blogs/publicsector/category/post-types/technical-how-to/) [Permalink](https://aws.amazon.com/blogs/publicsector/unlocking-commercial-ai-models-in-aws-govcloud-us-secure-cross-partition-access-with-amazon-bedrock/) [ Share](https://aws.amazon.com/vi/blogs/publicsector/unlocking-commercial-ai-models-in-aws-govcloud-us-secure-cross-partition-access-with-amazon-bedrock/#)
 
----
 
-## How Cross-Partition Access Works
 
-Workloads in AWS GovCloud (US) call Amazon Bedrock by sending requests to the service API in the commercial partition. Instead of calling an Amazon Bedrock endpoint within AWS GovCloud (US), applications route requests through a chosen network connection to the commercial partition where Amazon Bedrock resides.
+<p id="gdcalert1" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image1.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert2">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
 
-Since AWS GovCloud (US) and commercial partitions don't have natural internal connectivity, they are logically and physically isolated. For communication, organizations must use connections like public endpoints, AWS Site-to-Site VPN, or AWS Direct Connect. These connections carry requests between partitions.
 
-When traffic flows between AWS GovCloud (US) and commercial, it typically traverses the AWS backbone. As the Amazon VPC FAQ explains: "Network packets that originate from AWS and are destined for AWS resources always travel across the global AWS network, except for traffic to or from the China Regions." For more details, see Introduction to Network Transformation on AWS.
+![alt_text](images/image1.png "image_tooltip")
 
----
 
-## Security and Authentication
+Trong bài đăng này, chúng tôi sẽ trình bày ba giải pháp cho phép các workload trong  [AWS GovCloud (US)](https://aws.amazon.com/govcloud-us/) kết nối an toàn vào phân vùng thương mại của [Amazon Web Services (AWS)](https://aws.amazon.com/) để thực hiện suy luận với [Amazon Bedrock](https://aws.amazon.com/bedrock/). Mỗi phương pháp có những điểm mạnh, yếu riêng và đến cuối bài bạn sẽ xác định được lựa chọn phù hợp nhất cho tổ chức của mình.
 
-Amazon Bedrock uses service APIs over HTTPS, encrypting requests with TLS from AWS GovCloud (US) to the commercial partition. This ensures encryption for cross-partition communication regardless of connection method. For workloads requiring FIPS 140-validated cryptographic modules, Bedrock provides FIPS endpoints as documented in AWS General Reference for Amazon Bedrock.
+[Generative AI](https://aws.amazon.com/generative-ai/) đang phát triển rất nhanh, với các [foundation models (FMs)](https://aws.amazon.com/what-is/foundation-models/) và tính năng mới được cập nhật liên tục. Những khả năng này được giới thiệu đầu tiên ở phân vùng AWS thương mại. Với những tổ chức trong môi trường nhạy cảm, chịu sự quản lý nghiêm ngặt, thách thức là làm sao bắt kịp đổi mới này và cùng lúc thử nghiệm nhanh, thu thập phản hồi khách hàng, hoàn thiện chức năng mới thành các giải pháp sẵn sàng cho nhiệm vụ thực tế.
 
-Application logic always resides entirely within AWS GovCloud (US):
-- Amazon API Gateway exposes endpoints to workloads
-- AWS Lambda processes requests
-- AWS Secrets Manager stores Amazon Bedrock API keys
-- Amazon CloudWatch in AWS GovCloud (US) logs for performance monitoring
-- AWS CloudTrail in the commercial partition provides API call audit logs
 
----
+## **Cách Hoạt Động của Truy Cập Xuyên Phân Vùng**
 
----
+Các workload trong AWS GovCloud (US) gọi Amazon Bedrock bằng cách gửi request tới API dịch vụ trong phân vùng thương mại. Thay vì gọi endpoint Amazon Bedrock trong AWS GovCloud (US), ứng dụng sẽ chuyển request qua kết nối mạng đã chọn vào phân vùng thương mại nơi Amazon Bedrock lưu trú.
 
-## Architecture Guidance
+Do AWS GovCloud (US) và thương mại không có kết nối nội bộ tự nhiên, hai phân vùng này được cô lập về mặt logic và vật lý. Để giao tiếp, tổ chức phải dùng đường kết nối như endpoint công khai,[AWS Site-to-Site VPN](https://aws.amazon.com/vpn/site-to-site-vpn/) hoặc [AWS Direct Connect](https://aws.amazon.com/directconnect/). Các kết nối này mang request giữa các phân vùng.
 
-The main change since the last presentation of the overall architecture is the decomposition of a single service into a set of smaller services to improve maintainability and flexibility. Integrating a large volume of diverse healthcare data often requires specialized connectors for each format; by keeping them encapsulated separately as microservices, we can add, remove, and modify each connector without affecting the others. The microservices are loosely coupled via publish/subscribe messaging centered in what I call the “pub/sub hub.”
+Khi lưu lượng truyền giữa AWS GovCloud (US) và thương mại, nó thường đi qua backbone của AWS. Như [Amazon VPC FAQ](https://aws.amazon.com/vpc/faqs/#topic-2) giải thích: “Các gói tin xuất phát từ mạng AWS có đích đến cũng thuộc mạng AWS sẽ luôn lưu thông trên mạng toàn cầu AWS, trừ trường hợp sang khu vực Trung Quốc.” Để tìm hiểu kỹ, xem bài [Introduction to Network Transformation on AWS](https://aws.amazon.com/blogs/networking-and-content-delivery/introduction-to-network-transformation-on-aws-part-1/)..
 
-This solution represents what I would consider another reasonable sprint iteration from my last post. The scope is still limited to the ingestion and basic parsing of **HL7v2 messages** formatted in **Encoding Rules 7 (ER7)** through a REST interface.
+Amazon Bedrock sử dụng API dịch vụ qua HTTPS, mã hóa các request với TLS từ AWS GovCloud (US) sang phân vùng thương mại. Điều này đảm bảo luôn mã hóa cho giao tiếp xuyên phân vùng, bất kể cách kết nối. Đối với workload yêu cầu module mật mã đạt chuẩn FIPS 140, Bedrock cung cấp endpoint FIPS như tài liệu [AWS General Reference for Amazon Bedrock](https://docs.aws.amazon.com/general/latest/gr/bedrock.html).
 
-**The solution architecture is now as follows:**
+Logic ứng dụng luôn nằm hoàn toàn trong AWS GovCloud (US).[Amazon API Gateway](https://aws.amazon.com/api-gateway/) lộ endpoint tới workload; [AWS Lambda](https://aws.amazon.com/lambda/) xử lý request, lấy khóa API Amazon Bedrock từ [AWS Secrets Manager](https://aws.amazon.com/secrets-manager/) và gửi yêu cầu suy luận đến Bedrock ở phân vùng thương mại. Amazon Bedrock xử lý và trả về kết quả cho Lambda, sau đó trả lại ứng dụng. [Amazon CloudWatch](https://aws.amazon.com/cloudwatch/) ở AWS GovCloud (US) ghi log để theo dõi hiệu suất; AWS CloudTrail ở phân vùng thương mại cung cấp nhật ký audit các API call tới Bedrock, cho biết ai gọi và lúc nào, giúp theo dõi xuyên hai phân vùng.
 
-> *Figure 1. Overall architecture; colored boxes represent distinct services.*
+Nếu dùng Site-to-Site VPN hoặc AWS Direct Connect, cả hai phía GovCloud (US) và thương mại đều có [Amazon Virtual Private Cloud](https://aws.amazon.com/vpc/) (Amazon VPC)s nối với nhau qua kết nối này. Khác biệt duy nhất giữa endpoint công khai, VPN hay Direct Connect là đường request đi giữa hai phân vùng.
 
----
 
-While the term *microservices* has some inherent ambiguity, certain traits are common:  
-- Small, autonomous, loosely coupled  
-- Reusable, communicating through well-defined interfaces  
-- Specialized to do one thing well  
-- Often implemented in an **event-driven architecture**
+## **Ba Lựa Chọn Kết Nối**
 
-When determining where to draw boundaries between microservices, consider:  
-- **Intrinsic**: technology used, performance, reliability, scalability  
-- **Extrinsic**: dependent functionality, rate of change, reusability  
-- **Human**: team ownership, managing *cognitive load*
+Có ba cách kết nối từ AWS GovCloud (US) tới phân vùng thương mại. Chọn tùy theo yêu cầu bảo mật, hiệu năng và vận hành.
 
----
+Trước khi chọn, cần thiết lập xác thực bằng khóa API Amazon Bedrock ở tài khoản phân vùng thương mại  [Accelerate AI development with Amazon Bedrock API keys](https://aws.amazon.com/blogs/machine-learning/accelerate-ai-development-with-amazon-bedrock-api-keys/). Nên tuân theo thực hành tốt về luân phiên khóa API này. Vì GovCloud (US) có thể chủ động kết nối ra ngoài, luân phiên khóa có thể thực hiện tự động từ GovCloud (US), giảm vận hành và tăng an ninh.
 
-## Three Connection Options
+Chức năng Lambda ở GovCloud (US) lấy khóa này từ Secrets Manager và dùng xác thực với Amazon Bedrock ở phân vùng thương mại. Workload GovCloud (US) không bao giờ lưu giữ khóa trực tiếp, giảm rủi ro. Secrets Manager ở GovCloud (US) lưu trữ an toàn và chỉ Lambda truy xuất được.  [AWS Identity and Access Management (IAM)](https://aws.amazon.com/iam/) kiểm soát tối thiểu hóa quyền truy cập khóa.
 
-There are three ways to connect from AWS GovCloud (US) to the commercial partition. The choice depends on security requirements, performance needs, and operational considerations.
+Ngoài khóa API, cần bật quyền truy cập model trên Bedrock commercial cho từng foundation model dùng và cấu hình inference profile nếu cần như [Anthropic’s Claude 4](https://aws.amazon.com/bedrock/anthropic/).
 
-### Option 1: Public Endpoints
+Với VPN và Direct Connect, cần lập các endpoint riêng tư (VPC endpoint) trong VPC thương mại cho Amazon Bedrock và các dịch vụ phụ trợ như  [CloudWatch Logs](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/WhatIsCloudWatchLogs.html), Secrets Manager... Endpoint này giúp lưu thông nội bộ AWS, tránh internet, kiểm soát truy cập mạnh hơn qua IAM và policy tài nguyên.
 
-The simplest approach uses the AWS backbone to connect GovCloud (US) to the commercial partition. GovCloud (US) applications send HTTPS to API Gateway. TLS encrypts transmission; IAM and Secrets Manager control authentication, keeping sensitive information separate.
 
-Requirements in commercial partition:
-- Amazon Bedrock API key for authentication
-- Enabled model access for each FM to be used
-- Inference profiles for required models (like Claude 4)
+## **Lựa chọn 1: Endpoint công khai**
 
-This solution is suitable for proof-of-concept or experimental projects needing rapid deployment, potentially complete within weeks with minimal infrastructure. However, traffic routes through the internet, so it doesn't provide the highest security level.
+Cách đơn giản nhất dùng backbone AWS để nối GovCloud (US) đến phân vùng thương mại. Ứng dụng GovCloud (US) gửi HTTPS tới API Gateway. TLS mã hóa truyền tải; IAM và Secrets Manager điều khiển xác thực, tách biệt thông tin nhạy cảm.
 
-### Option 2: AWS Site-to-Site VPN with Private Endpoints
+Yêu cầu ở phân vùng thương mại:
 
-For organizations wanting higher security, avoiding public internet, AWS Site-to-Site VPN creates an encrypted "tunnel" between GovCloud (US) and commercial VPCs. All traffic flows through the VPN tunnel, enhancing security. VPC endpoints keep traffic within AWS.
 
-Requirements in commercial partition:
-- Everything from Option 1
-- Configured VPN gateway connecting to GovCloud (US)
-- Created VPC endpoints for AWS service access without internet routing
 
-This approach is better for production environments, offering better compliance and security, though more complex and time-consuming to deploy.
+* Khóa API Amazon Bedrock xác thực
+* Đã bật quyền truy cập model cho từng FM muốn dùng
+* Inference profile cho các model yêu cầu (như Claude 4).
 
-### Option 3: AWS Direct Connect
+Giải pháp này phù hợp cho proof-of-concept hoặc dự án thử nghiệm cần triển khai nhanh, có thể xong trong vài tuần với hạ tầng tối thiểu. Đổi lại, lưu lượng đi ra internet nên không đạt mức độ bảo mật cao nhất. Sơ đồ kiến trúc minh họa dưới đây.
 
-This option uses AWS Direct Connect to create private connections between GovCloud (US) and commercial partition, providing highest throughput, lowest latency, suitable for mission-critical AI workloads or high volumes. VPC endpoints keep traffic within AWS, avoiding internet.
 
-Requirements in commercial partition:
-- Everything from Option 1
-- Direct Connect gateway, multiple connections from each partition to customer network for routing
-- VPC endpoints for AWS access without internet routing
 
-This solution provides strongest security and consistent SLA-backed performance. However, requires complex network infrastructure deployment, taking weeks/months depending on partners and locations.
+<p id="gdcalert2" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image2.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert3">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
 
----
 
-## Choosing the Right Connection
+![alt_text](images/image2.png "image_tooltip")
 
-Selection depends on compliance requirements, data sensitivity, and existing network infrastructure. For testing, public endpoints with TLS encryption might suffice; production workloads typically use VPN or Direct Connect from the start.
 
-Important considerations:
-1. **Data Flow**: Data accompanying prompts will transfer to Amazon Bedrock in the commercial partition
-2. **Compliance**: Organizations must verify processes align with security regulations
-3. **Cost**: Data transfer fees apply for cross-partition traffic in both accounts
-4. **Security Requirements**: Choose connection method matching security policies and data type from the beginning
+*(Hình 1: Kiến trúc tổng quan tùy chọn endpoint công khai, ứng dụng GovCloud (US) gọi trực tiếp Bedrock ở phân vùng thương mại qua HTTPS)*
 
-Each option offers different advantages:
-- **Direct Connect**: Absolute path control, entirely private data transmission
-- **Site-to-Site VPN**: Good middle ground with encrypted transmission
-- **Public Endpoints**: Fastest to deploy but less controlled routing
 
----
+## **Lựa chọn 2: AWS Site-to-Site VPN với endpoint riêng tư**
 
-## Authors
+Dành cho tổ chức muốn bảo mật cao hơn, tránh internet công khai, dùng [AWS Site-to-Site VPN](https://aws.amazon.com/vpn/site-to-site-vpn/) lập “đường hầm” mã hóa giữa VPC GovCloud (US) và thương mại. Tất cả lưu lượng đi trong đường hầm VPN, tăng bảo mật. VPC endpoint dùng giữ lưu thông nội bộ AWS.
 
-**Tyler Replogle**
-Principal Solutions Architect and Technical Database Leader at AWS for global public sector. Helps AWS Partners and customers operate mission-critical solutions on AWS.
+Yêu cầu ở phân vùng thương mại:
 
-**Doug Hairfield**
-Senior Solutions Architect helping organizations harness AI power for practical problems. Experienced in designing workloads in high-compliance environments.
 
-**Michael Pitcher**
-Senior Solutions Architecture Manager at AWS. Works closely with partners to support public sector customer end goals. Experienced in security and compliance.
 
-**Vin Minichino**
-Senior Solutions Architect at AWS, supporting federal healthcare service partners. Father of two, RV travel enthusiast, and maker/creator.
+* Mọi thứ ở lựa chọn 1
+* Đã cấu hình VPN gateway nối GovCloud (US)
+* Đã tạo các VPC endpoint để dùng dịch vụ AWS mà không đi qua internet
 
----
+Cách này tốt cho môi trường triển khai thực tế, tuân thủ quy định tốt hơn, bảo mật cao hơn, bù lại phức tạp hơn và tốn thời gian triển khai. Xem hướng dẫn setup chi tiết  [Get started with AWS Site-to-Site VPN](https://docs.aws.amazon.com/vpn/latest/s2svpn/SetUpVPNConnections.html) trên AWS Docs. Sơ đồ minh họa kiến trúc dưới đây.
 
-## The Pub/Sub Hub
 
-Using a **hub-and-spoke** architecture (or message broker) works well with a small number of tightly related microservices.  
-- Each microservice depends only on the *hub*  
-- Inter-microservice connections are limited to the contents of the published message  
-- Reduces the number of synchronous calls since pub/sub is a one-way asynchronous *push*
 
-Drawback: **coordination and monitoring** are needed to avoid microservices processing the wrong message.
+<p id="gdcalert3" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image3.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert4">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
 
----
 
-## Core Microservice
+![alt_text](images/image3.png "image_tooltip")
 
-Provides foundational data and communication layer, including:  
-- **Amazon S3** bucket for data  
-- **Amazon DynamoDB** for data catalog  
-- **AWS Lambda** to write messages into the data lake and catalog  
-- **Amazon SNS** topic as the *hub*  
-- **Amazon S3** bucket for artifacts such as Lambda code
 
-> Only allow indirect write access to the data lake through a Lambda function → ensures consistency.
+*(Hình 2: Kiến trúc tổng quan tùy chọn kết nối VPN, GovCloud (US) và thương mại kết nối qua đường hầm VPN mã hóa)*
 
----
 
-## Front Door Microservice
+## **Lựa chọn 3: AWS Direct Connect**
 
-- Provides an API Gateway for external REST interaction  
-- Authentication & authorization based on **OIDC** via **Amazon Cognito**  
-- Self-managed *deduplication* mechanism using DynamoDB instead of SNS FIFO because:  
-  1. SNS deduplication TTL is only 5 minutes  
-  2. SNS FIFO requires SQS FIFO  
-  3. Ability to proactively notify the sender that the message is a duplicate  
+Lựa chọn này sử dụng AWS Direct Connect tạo đường kết nối riêng tư giữa GovCloud (US) và phân vùng thương mại, cho thông lượng cao nhất, độ trễ thấp nhất, thích hợp workload AI trọng yếu hoặc khối lượng lớn. VPC endpoint giữ lưu thông trong AWS, không đi qua internet.
 
----
+Lưu ý: Direct Connect không cung cấp đường riêng nội bộ từ GovCloud (US) sang thương mại, mà sẽ kết nối từng phân vùng tới mạng riêng của khách hàng, sau đó định tuyến giữa hai đầu ở đây. Thiết kế này cho phép kiểm soát đường đi, nhưng tăng độ trễ và phát sinh thêm cước truyền dữ liệu ở cả hai phía.
 
-## Staging ER7 Microservice
+Yêu cầu ở phân vùng thương mại:
 
-- Lambda “trigger” subscribed to the pub/sub hub, filtering messages by attribute  
-- Step Functions Express Workflow to convert ER7 → JSON  
-- Two Lambdas:  
-  1. Fix ER7 formatting (newline, carriage return)  
-  2. Parsing logic  
-- Result or error is pushed back into the pub/sub hub  
 
----
 
-## New Features in the Solution
+* Mọi thứ ở lựa chọn 1
+* Direct Connect gateway, đa kết nối từ từng phân vùng về mạng khách hàng để định tuyến
+* VPC endpoint để truy cập AWS mà không qua internet
 
+Giải pháp này có bảo mật mạnh nhất, hiệu năng nhất quán có SLA. Tuy nhiên phải triển khai hạ tầng mạng phức tạp, tốn nhiều tuần/tháng tuỳ vào đối tác và địa điểm, thường phù hợp khi workload đã ổn định và có nhu cầu hiệu năng lớn. Xem thêm blog về kết nối  [Hybrid connectivity to AWS GovCloud (US) and commercial Regions using AWS Direct Connect](https://aws.amazon.com/blogs/publicsector/aws-hybrid-connectivity-sharing-aws-direct-connect-aws-govcloud-us-commercial-regions/). Sơ đồ minh họa dưới đây.
+
+
+
+<p id="gdcalert4" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image4.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert5">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
+
+
+![alt_text](images/image4.png "image_tooltip")
+
+
+*(Hình 3: Kiến trúc tổng quan tùy chọn Direct Connect, từng phân vùng nối Direct Connect về mạng khách hàng, nơi định tuyến tới Bedrock ở phân vùng thương mại)*
+
+
+## **Chọn Kết Nối Phù Hợp**
+
+Chọn tùy thuộc quy định tuân thủ, độ nhạy cảm dữ liệu, hạ tầng mạng sẵn có. Với thử nghiệm, có thể dùng endpoint công khai với TLS mã hóa; còn workload thật sẽ dùng VPN hoặc Direct Connect ngay từ đầu.
+
+Cần lưu ý: dữ liệu đi kèm prompt sẽ truyền tới dịch vụ Amazon Bedrock ở phân vùng thương mại — nghĩa là dữ liệu và ngữ cảnh đi ra khỏi GovCloud (US). Các tổ chức phải kiểm tra quy trình phù hợp quy định bảo mật, kiểm soát dữ liệu.
+
+Cần tính chi phí truyền dữ liệu; lưu lượng đi qua phân vùng sẽ tính phí egress ở cả tài khoản GovCloud (US) lẫn thương mại. Nếu workload lớn, đây có thể là khoản tiền đáng kể.
+
+Chọn đường kết nối không phải là bắt đầu đơn giản rồi nâng cấp, mà nên chọn khớp với chính sách bảo mật và loại dữ liệu gửi sang Bedrock ngay từ đầu. Mỗi phương án đều có mặt lợi/hại khác nhau.
+
+Direct Connect cho phép kiểm soát đường đi tuyệt đối, dữ liệu truyền hoàn toàn qua đường riêng. Nếu đã có Direct Connect, thêm kết nối mới khá đơn giản; nếu chưa, cần thời gian nhiều tuần/tháng tùy đối tác triển khai.
+
+Site-to-Site VPN với endpoint riêng tư là điểm trung hòa ổn (middle ground). Lưu lượng giữa GovCloud (US) và thương mại thường đi backbone AWS, VPN mã hóa truyền tải, và có thể triển khai nhanh bằng IaC. Thường dùng được với môi trường sản xuất mà không phải xây hạ tầng như Direct Connect.
+
+Endpoint công khai dễ và nhanh nhất để triển khai, nhưng lưu lượng có thể đi ra ngoài backbone. TLS vẫn mã hóa truyền tải, song một số tổ chức sẽ không muốn dữ liệu ra khỏi mạng kiểm soát.
+
+
+## **Kết luận**
+
+Suy luận xuyên phân vùng là giải pháp an toàn, mở rộng cho khách hàng AWS GovCloud (US) tận dụng ngay các mô hình AI mới nhất ở phân vùng thương mại. Bằng cách kết hợp mạng qua internet, VPN hoặc Direct Connect, tổ chức có thể dùng Bedrock ở phân vùng thương mại từ GovCloud (US) nếu hợp quy định và kiểm soát rủi ro.
+
+Kiến trúc này cho phép các tổ chức vận hành trên GovCloud (US) dữ liệu nhạy cảm vẫn thử nghiệm, đổi mới với AI hiện đại ngay khi vừa ra mắt ở phân vùng thương mại. Cân bằng giữa đổi mới và kiểm soát an toàn, tuân thủ nghiêm ngặt.
+
+TAGS: [Artificial Intelligence](https://aws.amazon.com/blogs/publicsector/tag/artificial-intelligence/), [AWS GovCloud (US)](https://aws.amazon.com/blogs/publicsector/tag/aws-govcloud-us/), [AWS Public Sector](https://aws.amazon.com/blogs/publicsector/tag/aws-public-sector/), [government](https://aws.amazon.com/blogs/publicsector/tag/government/), [technical how-to](https://aws.amazon.com/blogs/publicsector/tag/technical-how-to/)
+
+
+<table>
+  <tr>
+   <td>
+
+<p id="gdcalert5" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image5.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert6">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
+
+
+<img src="images/image5.png" width="" alt="alt_text" title="image_tooltip">
+
+   </td>
+   <td><strong>Tyler Replogle</strong>
+<p>
+Tyler là kiến trúc sư giải pháp chính và lãnh đạo về cơ sở dữ liệu kỹ thuật tại AWS cho khối công cộng toàn cầu. Anh giúp các Đối tác và khách hàng AWS vận hành các giải pháp phục vụ nhiệm vụ cuối cùng của họ trên AWS.
+   </td>
+  </tr>
+  <tr>
+   <td>
+
+<p id="gdcalert6" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image6.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert7">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
+
+
+<img src="images/image6.png" width="" alt="alt_text" title="image_tooltip">
+
+   </td>
+   <td><strong>Doug Hairfield</strong>
+<p>
+Doug là kiến trúc sư giải pháp cấp cao, giúp các tổ chức khai thác sức mạnh của AI để giải quyết các vấn đề thực tế. Anh có nhiều kinh nghiệm giúp khách hàng thuộc lĩnh vực công cộng thiết kế workload trong môi trường tuân thủ cao. Khi không làm việc với giải pháp điện toán đám mây, Doug là một người cha và thích dành thời gian cho gia đình.
+   </td>
+  </tr>
+  <tr>
+   <td>
+
+<p id="gdcalert7" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image7.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert8">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
+
+
+<img src="images/image7.png" width="" alt="alt_text" title="image_tooltip">
+
+   </td>
+   <td><strong>Michael Pitcher</strong>
+<p>
+Michael là quản lý cấp cao về kiến trúc giải pháp tại AWS. Trong vai trò này, anh phối hợp chặt chẽ với các đối tác để hỗ trợ mục tiêu cuối cùng của khách hàng trong khối công cộng. Michael có nhiều kinh nghiệm về bảo mật và tuân thủ, từng làm việc tại tổ chức đánh giá bên thứ ba (3PAO), nơi anh tập trung vào chứng nhận đám mây và bảo mật đám mây ở các môi trường kiểm soát nghiêm ngặt.
+   </td>
+  </tr>
+  <tr>
+   <td>
+
+<p id="gdcalert8" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image8.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert9">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
+
+
+<img src="images/image8.png" width="" alt="alt_text" title="image_tooltip">
+
+   </td>
+   <td><strong>Vin Minichino</strong>
+<p>
+Vin là kiến trúc sư giải pháp cấp cao tại AWS, nơi anh hỗ trợ các đối tác dịch vụ y tế liên bang. Ngoài công việc, Vin là cha của hai con, đam mê du lịch bằng xe RV, và yêu thích chế tạo, sáng tạo.
+   </td>
+  </tr>
+</table>
 ### 1. AWS CloudFormation Cross-Stack References
 Example *outputs* in the core microservice:
 ```yaml
