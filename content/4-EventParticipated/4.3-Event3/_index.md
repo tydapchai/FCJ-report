@@ -136,9 +136,26 @@ Attending the **Amazon AI Services Workshop** provided a comprehensive understan
 
 #### Event Photos
 
-![Amazon AI Services Workshop](/images/event-3/workshop-overview.png) 
-![AI Services Demonstration](/images/event-3/demo-session.png) 
-![Hands-on Lab Session](/images/event-3/hands-on-lab.png) 
-![Networking Break](/images/event-3/networking.png) 
+![Event Overview - AI/ML/GenAI on AWS Workshop with audience](/images/event-3/workshop-overview.png) 
+
+![Presentation Session - Generative AI with Amazon Bedrock by Lam Tuan Kiet and Hieu Nghi Dinh](/images/event-3/demo-session.png)
+
+![Speakers Presentation - Lam Tuan Kiet and Hieu Nghi Dinh presenting](/images/event-3/speakers-presentation.png)
+
+![Kahoot Winners - Group photo with Kahoot quiz session](/images/event-3/kahoot-winners.png)
+
+![Amazon AI Services Grid - Overview of AWS AI service portfolio](/images/event-3/ai-services-grid.png)
+
+![RAG in Action - Retrieval Augmented Generation workflow diagram](/images/event-3/rag-in-action.png)
+
+![Amazon Bedrock AgentCore - Comprehensive agentic platform announcement](/images/event-3/bedrock-agentcore.png)
+
+![AgentCore Architecture - Services enabling agents at scale](/images/event-3/agentcore-architecture.png)
+
+![RetrieveAndGenerate API - Knowledge Bases for Amazon Bedrock fully managed RAG](/images/event-3/retrieve-generate-api.png)
+
+![Prototype to Production Chasm - Challenges on the path to production](/images/event-3/prototype-production-chasm.png)
+
+![Frameworks for Building Agents - Embracing open source frameworks](/images/event-3/frameworks-agents.png) 
 
 > Overall, this workshop equipped me with comprehensive knowledge of Amazon AI services, enabling me to identify opportunities for implementing intelligent automation and AI-powered features in future projects.
