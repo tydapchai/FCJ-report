@@ -14,11 +14,11 @@ pre: " <b> 1.4. </b> "
 ### Tasks to be carried out this week:
 | Day | Task | Start Date | Completion Date | Reference Material |
 | --- | --- | ---------- | --------------- | ------------------ |
-| 1   | Research and outline database migration objectives and constraints | 29/09/2025 | 29/09/2025 | AWS Documentation |
-| 2   | Study AWS Database Migration Services: DMS, SCT, Snow Family, DataSync; map use cases | 29/09/2025 | 29/09/2025 | AWS Documentation |
-| 3   | Document migration phases: assessment, preparation, execution, validation, optimization | 29/09/2025 | 29/09/2025 | AWS Documentation |
-| 4   | Study AWS Network Services: VPC, security layers, VPC Endpoints/PrivateLink, VPN/Direct Connect | 30/09/2025 | 03/10/2025 | AWS Documentation |
-| 5   | Summarize Route 53 and CloudFront roles; create diagrams and notes | 03/10/2025 | 03/10/2025 | AWS Documentation |
+| 1   | Research and outline database migration objectives and constraints | 29/09/2025 | 29/09/2025 | [DMS Docs](https://docs.aws.amazon.com/dms/) |
+| 2   | Study AWS Database Migration Services: DMS, SCT, Snow Family, DataSync; map use cases | 29/09/2025 | 29/09/2025 | [DMS Docs](https://docs.aws.amazon.com/dms/) / [DataCamp](https://www.datacamp.com/) |
+| 3   | Document migration phases: assessment, preparation, execution, validation, optimization | 29/09/2025 | 29/09/2025 | [AWS Migration Docs](https://docs.aws.amazon.com/dms/latest/userguide/CHAP_BestPractices.html) |
+| 4   | Study AWS Network Services: VPC, security layers, VPC Endpoints/PrivateLink, VPN/Direct Connect | 30/09/2025 | 03/10/2025 | [VPC Docs](https://docs.aws.amazon.com/vpc/) / [DataCamp](https://www.datacamp.com/) |
+| 5   | Summarize Route 53 and CloudFront roles; create diagrams and notes | 03/10/2025 | 03/10/2025 | [Route 53 Docs](https://docs.aws.amazon.com/route53/) / [CloudFront Docs](https://docs.aws.amazon.com/cloudfront/) |
 
 
 ### Week 4 Achievements:

@@ -14,11 +14,11 @@ pre: " <b> 1.7. </b> "
 ### TASKS FOR WEEK 7:
 | Day | Task                                                                                  | Start Date | Completion Date | Reference Material                        |
 |-----|---------------------------------------------------------------------------------------|------------|-----------------|-------------------------------------------|
-| 2   | - Review basic cloud computing concepts <br> - Review AWS service categories <br> - Complete practice quiz on fundamentals | 20/11/2025 | 20/11/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 3   | - Review EC2 and compute services concepts <br> - Review storage services (S3, EBS) <br> - Complete practice quiz on compute & storage | 21/11/2025 | 21/11/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Review networking concepts and VPC <br> - Review database services <br> - Complete practice quiz on networking & database | 22/11/2025 | 22/11/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Review AWS CLI and Management Console usage <br> - Review security and IAM concepts <br> - Complete comprehensive practice quiz | 23/11/2025 | 23/11/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - Final review and summary <br> - Complete mock exam <br> - Prepare for competition | 24/11/2025 | 24/11/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| 2   | - Review basic cloud computing concepts <br> - Review AWS service categories <br> - Complete practice quiz on fundamentals | 20/10/2025 | 20/10/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| 3   | - Review EC2 and compute services concepts <br> - Review storage services (S3, EBS) <br> - Complete practice quiz on compute & storage | 21/10/2025 | 21/10/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| 4   | - Review networking concepts and VPC <br> - Review database services <br> - Complete practice quiz on networking & database | 22/10/2025 | 22/10/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| 5   | - Review AWS CLI and Management Console usage <br> - Review security and IAM concepts <br> - Complete comprehensive practice quiz | 23/10/2025 | 23/10/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| 6   | - Final review and summary <br> - Complete mock exam <br> - Prepare for competition | 24/10/2025 | 24/10/2025      | <https://cloudjourney.awsstudygroup.com/> |
 
 ### ACHIEVEMENTS FOR WEEK 7:
 1. Successfully reviewed all core AWS concepts including:

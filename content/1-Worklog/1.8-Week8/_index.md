@@ -5,53 +5,46 @@ weight: 1
 chapter: false
 pre: " <b> 1.8. </b> "
 ---
-{{% notice warning %}} 
-⚠️ **Note:** The following information is for reference purposes only. Please **do not copy verbatim** for your own report, including this warning.
-{{% /notice %}}
 
 
-### Week 8 Objectives:
 
-* Connect and get acquainted with members of First Cloud Journey.
-* Understand basic AWS services, how to use the console & CLI.
+### OBJECTIVES FOR WEEK 8:
+- Continue preparing for the competition/exam
+- Understand Infrastructure as Code (IaC) concepts
+- Learn AWS CDK and Terraform fundamentals
+- Get started with NodeJS basics
 
-### Tasks to be carried out this week:
-| Day | Task                                                                                                                                                                                                   | Start Date | Completion Date | Reference Material                        |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------- | --------------- | ----------------------------------------- |
-| 2   | - Get acquainted with FCJ members <br> - Read and take note of internship unit rules and regulations                                                                                                   | 08/11/2025 | 08/11/2025      |
-| 3   | - Learn about AWS and its types of services <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                              | 08/12/2025 | 08/12/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Create AWS Free Tier account <br> - Learn about AWS Console & AWS CLI <br> - **Practice:** <br>&emsp; + Create AWS account <br>&emsp; + Install & configure AWS CLI <br> &emsp; + How to use AWS CLI | 08/13/2025 | 08/13/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Learn basic EC2: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - SSH connection methods to EC2 <br> - Learn about Elastic IP   <br>                            | 08/14/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Practice:** <br>&emsp; + Launch an EC2 instance <br>&emsp; + Connect via SSH <br>&emsp; + Attach an EBS volume                                                                                     | 08/15/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
+### TASKS FOR WEEK 8:
+| Day | Task                                                                                  | Start Date | Completion Date | Reference Material                        |
+|-----|---------------------------------------------------------------------------------------|------------|-----------------|-------------------------------------------|
+| 2   | - Continue exam review and practice <br> - Introduction to IaC concepts <br> - Learn benefits of Infrastructure as Code | 27/10/2025 | 27/10/2025      | [IaC Concepts](https://www.youtube.com/watch?v=POPP2WTJ-QA) |
+| 3   | - Introduction to AWS CDK <br> - Learn CDK basics and structure <br> - Complete practice quiz on IaC & CDK | 28/10/2025 | 28/10/2025      | [AWS CDK Tutorial](https://www.youtube.com/watch?v=T-H4dJLDs3o) |
+| 4   | - Introduction to Terraform <br> - Learn Terraform syntax and configuration <br> - Compare CDK vs Terraform | 29/10/2025 | 29/10/2025      | [Terraform Tutorial](https://www.youtube.com/watch?v=l5k1ai_GBDE) |
+| 5   | - NodeJS basics and fundamentals <br> - Install NodeJS and npm <br> - Basic NodeJS syntax and modules | 30/10/2025 | 30/10/2025      | <https://nodejs.org/> |
+| 6   | - Continue exam preparation <br> - Practice hands-on with CDK or Terraform examples <br> - NodeJS practice exercises | 31/10/2025 | 31/10/2025      | [Node.js Practice](https://www.youtube.com/watch?v=RLtQcvxrfp4) |
 
+### ACHIEVEMENTS FOR WEEK 8:
+1. Successfully continued exam preparation with comprehensive review
 
-### Week 8 Achievements:
+2. Gained understanding of Infrastructure as Code (IaC) concepts including:
+   - Benefits of IaC for cloud management
+   - Declarative vs imperative approaches
+   - Version control and reproducibility
 
-* Understood what AWS is and mastered the basic service groups: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
+3. Learned AWS CDK fundamentals:
+   - CDK structure and components
+   - Basic CDK syntax and patterns
+   - How to define AWS resources using code
 
-* Successfully created and configured an AWS Free Tier account.
+4. Learned Terraform basics:
+   - Terraform configuration files (.tf)
+   - Resource definitions and variables
+   - Comparison with AWS CDK
 
-* Became familiar with the AWS Management Console and learned how to find, access, and use services via the web interface.
+5. Got started with NodeJS:
+   - Installed NodeJS and npm
+   - Learned basic NodeJS syntax
+   - Understood modules and packages
+   - Completed basic NodeJS practice exercises
 
-* Installed and configured AWS CLI on the computer, including:
-  * Access Key
-  * Secret Key
-  * Default Region
-  * ...
-
-* Used AWS CLI to perform basic operations such as:
-
-  * Check account & configuration information
-  * Retrieve the list of regions
-  * View EC2 service
-  * Create and manage key pairs
-  * Check information about running services
-  * ...
-
-* Acquired the ability to connect between the web interface and CLI to manage AWS resources in parallel.
-* ...
+6. Prepared thoroughly for upcoming competition while building foundational knowledge in modern DevOps tools
