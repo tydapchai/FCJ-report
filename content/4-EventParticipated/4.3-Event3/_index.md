@@ -138,9 +138,8 @@ Attending the **Amazon AI Services Workshop** provided a comprehensive understan
 
 ![Event Overview - AI/ML/GenAI on AWS Workshop with audience](/images/event-3/workshop-overview.png) 
 
-![Presentation Session - Generative AI with Amazon Bedrock by Lam Tuan Kiet and Hieu Nghi Dinh](/images/event-3/demo-session.png)
+![Presentation Session ](/images/event-3/demo-session.png)
 
-![Speakers Presentation - Lam Tuan Kiet and Hieu Nghi Dinh presenting](/images/event-3/speakers-presentation.png)
 
 ![Kahoot Winners - Group photo with Kahoot quiz session](/images/event-3/kahoot-winners.png)
 

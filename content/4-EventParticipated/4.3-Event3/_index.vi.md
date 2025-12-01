@@ -1,111 +1,144 @@
 ---
-title: "Event 1"
-date: "2025-09-18"
-weight: 1
+title: "Event 3"
+date: "2025-10-15"
+weight: 3
 chapter: false
-pre: " <b> 4.1. </b> "
+pre: " <b> 4.3. </b> "
 ---
-# Summary Report: “Vietnam Cloud Day 2025 - Ho Chi Minh City Connect Edition for Builders”
+# Summary Report: "​AI/ML/GenAI on AWS"
 
-### Mục tiêu sự kiện
+### Event Objectives
 
-- Trải nghiệm phiên toàn thể được phát trực tiếp từ Hà Nội  
-- Lắng nghe các bài phát biểu chính và những thông báo đột phá định hình tương lai điện toán đám mây tại Việt Nam  
-- Khám phá các phát triển mới nhất và ứng dụng thực tiễn của Generative AI  
-- Hiểu về phân tích dữ liệu giúp chuyển đổi doanh nghiệp dựa trên dữ liệu  
-- Học về di chuyển và hiện đại hóa để điều hướng hành trình chuyển đổi đám mây  
+- Explore Amazon's comprehensive suite of AI services and their real-world applications  
+- Understand computer vision capabilities through Amazon Rekognition  
+- Learn about neural machine translation and real-time language processing  
+- Discover document analysis and text extraction services  
+- Experience speech-to-text and text-to-speech conversion technologies  
+- Gain insights into natural language processing and intelligent search solutions  
+- Understand recommendation systems and conversational AI frameworks  
 
-### Diễn giả
+### Key Highlights
 
-- Eric Yeo – Giám đốc Quốc gia, Việt Nam, Campuchia, Lào & Myanmar, AWS  
-- Jaime Valles – Phó chủ tịch, Kinh doanh thương mại & Phát triển kinh doanh APJ, AWS  
-- Jeff Johnson – Giám đốc điều hành ASEAN, AWS  
-- Dr. Jens Lottner – Tổng giám đốc, Techcombank  
-- Trang Phung – CEO, U2U Network  
-- Vu Van – Đồng sáng lập & CEO, ELSA Corp  
-- Nguyen Hoa Binh – Chủ tịch, Nexttech Group  
-- Dieter Botha – CEO, Tymex  
-- Nguyen Van Hai – Giám đốc Kỹ thuật Phần mềm, Techcombank  
-- Nguyen The Vinh – Đồng sáng lập & CTO, Ninety Eight  
-- Nguyen Minh Ngan – Chuyên gia AI, OCB  
-- Nguyen Manh Tuyen – Trưởng bộ phận Ứng dụng Dữ liệu, LPBank Securities  
+- Comprehensive overview of Amazon's AI service portfolio covering vision, language, speech, and search  
+- Deep dive into computer vision services with detection, analysis, comparison, and recognition capabilities  
+- Exploration of neural machine translation for real-time multilingual communication  
+- Introduction to document processing and text extraction technologies  
+- Overview of conversational AI frameworks for real-time streaming voice assistants  
 
-### Những điểm nổi bật chính
+### Considerable Benefits
 
-- Vietnam Cloud Day 2025 cung cấp trải nghiệm hybrid kết nối Hà Nội và TP. Hồ Chí Minh  
-- Phiên toàn thể truyền trực tiếp từ Hà Nội với các bài phát biểu quan trọng và công bố sáng tạo đột phá về đám mây  
-- Các phiên họp tại TP. Hồ Chí Minh tập trung vào Generative AI, Phân tích Dữ liệu và Di chuyển & Hiện đại hóa  
+- Gain practical knowledge of AWS AI services applicable to various business use cases  
+- Understand how to leverage AI services for automation and intelligent decision-making  
+- Learn about custom labeling and self-trained models for specialized applications  
+- Discover integration patterns for building end-to-end AI-powered solutions  
 
-### Lợi ích đáng kể
+### Key Takeaways
 
-- Mở rộng mạng lưới tại địa phương, gặp gỡ cộng đồng công nghệ sôi nổi tại TP. Hồ Chí Minh  
-- Học hỏi từ các chuyên gia hàng đầu về đám mây của Việt Nam  
-- Cập nhật tiên phong về tương lai công nghệ điện toán đám mây tại Việt Nam  
+#### Computer Vision & Image Analysis
 
-### Những bài học rút ra
+- **Amazon Rekognition** provides comprehensive computer vision capabilities  
+- Supports multiple tasks: detection, analysis, comparison, and recognition  
+- Custom labeling feature enables self-trained models for domain-specific use cases  
+- Ideal for content moderation, facial recognition, and object detection applications  
 
-#### Thấu hiểu chiến lược
+#### Language & Translation Services
 
-- Tăng tốc chuyển đổi số mạnh mẽ trên toàn Việt Nam  
-- Sự hợp tác giữa chính phủ và doanh nghiệp trong các sáng kiến ưu tiên điện toán đám mây quốc gia  
-- Câu chuyện thành công từ Techcombank, U2U Network trên hành trình áp dụng AWS  
-- Tập trung lãnh đạo điều hành trong việc phù hợp các sáng kiến GenAI với mục tiêu kinh doanh  
+- **Amazon Translate** offers neural machine translation service  
+- Enables real-time translation for multilingual applications  
+- Supports seamless integration for global communication needs  
 
-#### Tầm nhìn kỹ thuật sâu
+#### Document Processing
 
-- Chiến lược xây dựng nền tảng dữ liệu thống nhất và mở rộng trên AWS  
-- Lộ trình áp dụng GenAI bằng các dịch vụ AWS  
-- Vòng đời phát triển được điều khiển bởi AI (AI-DLC) tích hợp AI trong toàn bộ quy trình phát triển phần mềm  
-- Các nguyên tắc bảo mật tốt nhất bảo vệ dữ liệu, mô hình và ứng dụng AI  
-- Các đại lý AI tiên tiến giúp tăng năng suất vượt xa tự động hóa truyền thống  
+- **Amazon Textract** extracts text and layouts from documents  
+- Automates data extraction from forms, invoices, and structured documents  
+- Reduces manual data entry and improves accuracy  
 
-#### Kiến trúc & vận hành
+#### Speech Services
 
-- Thiết kế mô-đun dựa trên sự kiện, hệ thống bền vững và lỏng lẻo kết nối  
-- Lựa chọn dịch vụ phù hợp: EC2, container hay kiến trúc serverless  
-- Thiết kế để mở rộng, giám sát và kiểm soát chi phí hiệu quả  
+- **Amazon Transcribe** converts speech to text with high accuracy  
+- Supports real-time transcription for live events and meetings  
+- **Amazon Polly** provides text-to-speech service  
+- Enables natural-sounding voice synthesis for accessibility and automation  
 
-### Ứng dụng vào công việc
+#### Natural Language Processing
 
-- Đánh giá và lựa chọn ứng dụng có thể di chuyển ngay lên AWS với ROI rõ ràng  
-- Xây dựng nền tảng dữ liệu từ lưu trữ, xử lý nhằm phục vụ phân tích và AI  
-- Thử nghiệm GenAI với các công cụ như Amazon Bedrock hoặc SageMaker  
-- Tăng cường bảo mật với chính sách IAM tối thiểu và cấu hình mạng an toàn  
-- Nâng cao kỹ năng cho đội ngũ về dịch vụ AI/ML của AWS để duy trì sức cạnh tranh  
+- **Amazon Comprehend** offers comprehensive NLP processing service  
+- Extracts insights and relationships from unstructured text  
+- Enables sentiment analysis, entity recognition, and topic modeling  
+- Supports custom models for domain-specific language understanding  
 
-### Trải nghiệm sự kiện
+#### Intelligent Search
 
-Tham dự sự kiện **Vietnam Cloud Day 2025: Ho Chi Minh City Connect Edition for Builders** mang lại nhiều kiến thức quý giá và định hướng rõ ràng cho việc hiện đại hóa ứng dụng và cơ sở dữ liệu bằng công nghệ đám mây tiên tiến.
+- **Amazon Kendra** provides intelligent search service  
+- Delivers accurate, context-aware search results  
+- Understands natural language queries and provides relevant answers  
 
-#### Học hỏi từ các chuyên gia
+#### Anomaly Detection & Monitoring
 
-- Tiếp nhận kiến thức từ các chuyên gia AWS và lãnh đạo công nghệ hàng đầu  
-- Hiểu sâu hơn về cách áp dụng Domain-Driven Design (DDD) và Kiến trúc hướng sự kiện trên quy mô lớn  
+- **Amazon Lookout Family** offers anomaly detection capabilities  
+- Monitors equipment and processes for predictive maintenance  
+- Detects anomalies in time-series data and operational metrics  
 
-#### Kinh nghiệm kỹ thuật thực tế
+#### Personalization & Recommendations
 
-- Tham gia các workshop event storming để chuyển đổi quy trình kinh doanh thành các sự kiện miền  
-- Thực hành phân tách hệ thống thành các microservices với bounded contexts rõ ràng  
-- Khám phá các mô hình giao tiếp đồng bộ và bất đồng bộ, pub/sub, point-to-point và streaming  
+- **Amazon Personalize** tailors recommendations to individual users  
+- Builds custom recommendation models without machine learning expertise  
+- Improves user engagement through personalized experiences  
 
-#### Khám phá công cụ hiện đại
+#### Conversational AI Frameworks
 
-- Tìm hiểu Amazon Q Developer - trợ lý AI hỗ trợ toàn bộ vòng đời phát triển phần mềm  
-- Học cách tự động hóa tái cấu trúc mã và áp dụng kiến trúc serverless với AWS Lambda  
+- **Pipecat** framework enables real-time/streaming conversational voice assistants  
+- Supports building interactive voice applications with low latency  
+- Facilitates natural, flowing conversations in voice-enabled systems  
 
-#### Mạng lưới & hợp tác
+### Applying to Work
 
-- Kết nối với chuyên gia AWS, lãnh đạo doanh nghiệp và cộng đồng builder  
-- Củng cố ngôn ngữ chung giữa các nhóm kỹ thuật và kinh doanh, nhấn mạnh tư duy ưu tiên doanh nghiệp  
+- Implement Amazon Rekognition for automated content moderation and image analysis  
+- Integrate Amazon Translate for multilingual customer support and documentation  
+- Use Amazon Textract to automate document processing and data extraction workflows  
+- Deploy Amazon Transcribe and Polly for accessibility features and voice-enabled applications  
+- Leverage Amazon Comprehend for sentiment analysis and customer feedback processing  
+- Implement Amazon Kendra for intelligent search capabilities in knowledge bases  
+- Utilize Amazon Personalize to enhance user experience with personalized recommendations  
+- Explore Pipecat for building conversational voice interfaces and virtual assistants  
 
-#### Bài học quan trọng
+### Event Experience
 
-- Việc áp dụng DDD và mẫu kiến trúc hướng sự kiện giúp nâng cao tính mở rộng, độ bền và khả năng bảo trì  
-- Thành công trong hiện đại hóa dựa vào kế hoạch phân giai đoạn và theo dõi ROI  
-- Công cụ AI như Amazon Q Developer tăng tốc độ phát triển và hiệu quả nhóm  
+Attending the **Amazon AI Services Workshop** provided a comprehensive understanding of AWS's AI/ML service portfolio, demonstrating how these services can be integrated to build intelligent, automated solutions.
 
-#### Ảnh sự kiện
+#### Learning from AWS AI Services
 
-![Some event pictures](/images/event1.png)  
+- Gained deep insights into the breadth of Amazon's AI service offerings  
+- Understood the practical applications of each service across different industries  
+- Learned about integration patterns for combining multiple AI services  
 
-> Tổng thể, Vietnam Cloud Day 2025 đã trang bị cho tôi kiến thức và công cụ thúc đẩy đổi mới và chuyển đổi đám mây cho tương lai Việt Nam.
+#### Technical Deep-Dive
+
+- Explored computer vision capabilities for image and video analysis  
+- Discovered language processing services for multilingual applications  
+- Understood speech services for voice-enabled solutions  
+- Learned about intelligent search and recommendation systems  
+
+#### Exploring Use Cases
+
+- Document automation using Textract for form processing  
+- Content moderation using Rekognition for image and video analysis  
+- Multilingual support using Translate for global applications  
+- Voice interfaces using Transcribe, Polly, and Pipecat for conversational AI  
+- Personalized experiences using Personalize for recommendation engines  
+
+#### Key Lessons Learned
+
+- AWS AI services provide pre-trained models that reduce development time  
+- Custom labeling enables domain-specific model training without deep ML expertise  
+- Integration of multiple AI services creates powerful end-to-end solutions  
+- Real-time processing capabilities enable responsive, interactive applications  
+
+#### Event Photos
+
+![Amazon AI Services Workshop](/images/event-3/workshop-overview.png) 
+![AI Services Demonstration](/images/event-3/demo-session.png) 
+![Hands-on Lab Session](/images/event-3/hands-on-lab.png) 
+![Networking Break](/images/event-3/networking.png) 
+
+> Overall, this workshop equipped me with comprehensive knowledge of Amazon AI services, enabling me to identify opportunities for implementing intelligent automation and AI-powered features in future projects.
