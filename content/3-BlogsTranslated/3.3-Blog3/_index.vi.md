@@ -1,127 +1,54 @@
 ---
 title: "Blog 3"
-date: "2025-09-11"
+date: "2024-09-30"
 weight: 1
 chapter: false
 pre: " <b> 3.3. </b> "
 ---
 
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
 
-# Bắt đầu với healthcare data lakes: Sử dụng microservices
+## [AWS Public Sector Blog](https://aws.amazon.com/blogs/publicsector/)
 
-Các data lake có thể giúp các bệnh viện và cơ sở y tế chuyển dữ liệu thành những thông tin chi tiết về doanh nghiệp và duy trì hoạt động kinh doanh liên tục, đồng thời bảo vệ quyền riêng tư của bệnh nhân. **Data lake** là một kho lưu trữ tập trung, được quản lý và bảo mật để lưu trữ tất cả dữ liệu của bạn, cả ở dạng ban đầu và đã xử lý để phân tích. data lake cho phép bạn chia nhỏ các kho chứa dữ liệu và kết hợp các loại phân tích khác nhau để có được thông tin chi tiết và đưa ra các quyết định kinh doanh tốt hơn.
+# Westway và AWS hợp tác để chuyển đổi đổi mới cloud mật
 
-Bài đăng trên blog này là một phần của loạt bài lớn hơn về việc bắt đầu cài đặt data lake dành cho lĩnh vực y tế. Trong bài đăng blog cuối cùng của tôi trong loạt bài, *“Bắt đầu với data lake dành cho lĩnh vực y tế: Đào sâu vào Amazon Cognito”*, tôi tập trung vào các chi tiết cụ thể của việc sử dụng Amazon Cognito và Attribute Based Access Control (ABAC) để xác thực và ủy quyền người dùng trong giải pháp data lake y tế. Trong blog này, tôi trình bày chi tiết cách giải pháp đã phát triển ở cấp độ cơ bản, bao gồm các quyết định thiết kế mà tôi đã đưa ra và các tính năng bổ sung được sử dụng. Bạn có thể truy cập các code samples cho giải pháp tại Git repo này để tham khảo.
+![AWS branded background with text "Westway and AWS partner to transform classified cloud innovation"](https://d2908q01vomqb2.cloudfront.net/9e6a55b6b4563e652a23be9d623ca5055c356940/2025/09/22/AWS-Public-Sector-Blog-Featured-Images-Blog-Header-static-template-Autosaved-21.png)
 
----
+Các khách hàng quốc phòng và an ninh quốc gia đang chuyển đổi từ các hệ thống legacy sang các giải pháp thương mại đổi mới, tốt nhất trong cloud có thể cung cấp cho chiến binh lợi thế kỹ thuật vượt trội. Các nhà thầu quốc phòng phi truyền thống và các công ty thương mại xây dựng các giải pháp này đối mặt với một thách thức: truy cập IT mật một cách nhanh chóng và tiết kiệm chi phí. Hôm nay, chúng tôi vui mừng thông báo quan hệ đối tác giữa [Amazon Web Services (AWS)](https://aws.amazon.com/) và [Westway Services Group LLC](https://www.westwayllc.com/) để giải quyết trực tiếp thách thức này.
 
-## Hướng dẫn kiến trúc
+## Tình trạng hiện tại của việc truy cập cơ sở hạ tầng mật
 
-Thay đổi chính kể từ lần trình bày cuối cùng của kiến trúc tổng thể là việc tách dịch vụ đơn lẻ thành một tập hợp các dịch vụ nhỏ để cải thiện khả năng bảo trì và tính linh hoạt. Việc tích hợp một lượng lớn dữ liệu y tế khác nhau thường yêu cầu các trình kết nối chuyên biệt cho từng định dạng; bằng cách giữ chúng được đóng gói riêng biệt với microservices, chúng ta có thể thêm, xóa và sửa đổi từng trình kết nối mà không ảnh hưởng đến những kết nối khác. Các microservices được kết nối rời thông qua tin nhắn publish/subscribe tập trung trong cái mà tôi gọi là “pub/sub hub”.
+Đối với nhiều nhà thầu quốc phòng, xây dựng giải pháp nhiệm vụ trong môi trường mật là một rào cản lớn. Nghiên cứu gần đây cho thấy 44% nhà thầu quốc phòng coi việc truy cập môi trường mật là thách thức lớn nhất khi làm việc với chính phủ. Quy trình truyền thống có thể mất hơn 3 năm và đòi hỏi đầu tư đáng kể vào xây dựng cơ sở, chứng nhận [cơ sở thông tin phân loại bảo mật (SCIF)](https://csrc.nist.gov/glossary/term/sensitive_compartmented_information_facility), mua sắm và cài đặt IT tại chỗ, và ủy quyền mạng.
 
-Giải pháp này đại diện cho những gì tôi sẽ coi là một lần lặp nước rút hợp lý khác từ last post của tôi. Phạm vi vẫn được giới hạn trong việc nhập và phân tích cú pháp đơn giản của các **HL7v2 messages** được định dạng theo **Quy tắc mã hóa 7 (ER7)** thông qua giao diện REST.
+"Các nhà thầu quốc phòng phi truyền thống và các nhà đổi mới công nghệ thương mại với khả năng thay đổi cuộc chơi đã bị khóa hiệu quả khỏi môi trường mật do chi phí và thời gian cấm đoán," Greg Lindsey, chủ tịch tại Westway Services Group LLC cho biết.
 
-**Kiến trúc giải pháp bây giờ như sau:**
+Với AWS, khách hàng có thể nhanh chóng truy cập các dịch vụ cloud an toàn, đáng tin cậy và có thể mở rộng để đáp ứng các yêu cầu nhiệm vụ.
 
-> *Hình 1. Kiến trúc tổng thể; những ô màu thể hiện những dịch vụ riêng biệt.*
+## Cách tiếp cận mới cho đổi mới cloud mật
 
----
+Quan hệ đối tác giữa AWS và Westway Services Group LLC giới thiệu một con đường hợp lý cho các đối tác được ủy quyền đến [AWS Top Secret cloud](https://aws.amazon.com/federal/top-secret-cloud/) thông qua [Secure Cloud Connect của Westway](https://aws.amazon.com/marketplace/pp/prodview-khmlvp4olb7k6). Giải pháp này hỗ trợ trực tiếp các sáng kiến hành pháp gần đây để hiện đại hóa các hoạt động mua sắm quốc phòng và thúc đẩy đổi mới thương mại trong cơ sở công nghiệp quốc phòng.
 
-Mặc dù thuật ngữ *microservices* có một số sự mơ hồ cố hữu, một số đặc điểm là chung:  
-- Chúng nhỏ, tự chủ, kết hợp rời rạc  
-- Có thể tái sử dụng, giao tiếp thông qua giao diện được xác định rõ  
-- Chuyên biệt để giải quyết một việc  
-- Thường được triển khai trong **event-driven architecture**
+"Quan hệ đối tác của chúng tôi với AWS tạo ra cầu nối giữa đổi mới thương mại và các nhiệm vụ mật, cung cấp cho những người chơi phi truyền thống này không gian an toàn với kết nối được chính phủ phê duyệt đến các khả năng điện toán hiệu suất cao tiên tiến và AI tạo sinh của AWS Top Secret cloud," Lindsey cho biết.
 
-Khi xác định vị trí tạo ranh giới giữa các microservices, cần cân nhắc:  
-- **Nội tại**: công nghệ được sử dụng, hiệu suất, độ tin cậy, khả năng mở rộng  
-- **Bên ngoài**: chức năng phụ thuộc, tần suất thay đổi, khả năng tái sử dụng  
-- **Con người**: quyền sở hữu nhóm, quản lý *cognitive load*
+Các công ty được phê duyệt giờ có thể truy cập các cơ sở mật và kết nối đến AWS trong vài tuần thay vì nhiều năm, mở khóa quyền truy cập của các nhà thầu quốc phòng phi truyền thống đến các dịch vụ compute, database và AI tạo sinh tốt nhất—như [Amazon Bedrock](https://aws.amazon.com/bedrock/)—[có sẵn trong AWS Top Secret cloud](https://aws.amazon.com/blogs/publicsector/amazon-bedrock-launches-with-claude-3-5-sonnet-in-the-aws-top-secret-cloud/). Sự giảm đáng kể về thời gian, chi phí và độ phức tạp này loại bỏ các rào cản đã lịch sử ngăn cản công nghệ thương mại đổi mới khỏi việc xây dựng các giải pháp quốc phòng và an ninh quốc gia.
 
----
+"Bằng cách hợp tác với Westway, chúng tôi đang giảm rủi ro kinh doanh và tăng tốc chu kỳ đổi mới cho AWS Partner Network trong AWS Top Secret Cloud. Điều này sẽ cho phép các đối tác được ủy quyền nhanh chóng truy cập, xây dựng và cung cấp các giải pháp AI/ML thế hệ tiếp theo trong AWS Top Secret Regions cho khách hàng chính phủ chung của chúng tôi," Keith Brooks, giám đốc AWS Government Regions và Federal Delivery Organization cho biết.
 
-## Lựa chọn công nghệ và phạm vi giao tiếp
+## Cách thức hoạt động
 
-| Phạm vi giao tiếp                        | Các công nghệ / mô hình cần xem xét                                                        |
-| ---------------------------------------- | ------------------------------------------------------------------------------------------ |
-| Trong một microservice                   | Amazon Simple Queue Service (Amazon SQS), AWS Step Functions                               |
-| Giữa các microservices trong một dịch vụ | AWS CloudFormation cross-stack references, Amazon Simple Notification Service (Amazon SNS) |
-| Giữa các dịch vụ                         | Amazon EventBridge, AWS Cloud Map, Amazon API Gateway                                      |
+Westway cung cấp các cơ sở tuân thủ Intelligence Community Directive 705 (ICD-705) với kết nối được thiết lập sẵn đến AWS Top Secret cloud. Phương pháp turnkey này giảm thời gian onboarding khách hàng hơn 70%, với khách hàng AWS chỉ trả tiền cho những gì họ sử dụng trong cloud. Tương tự, Westway cung cấp các tùy chọn "as a service" có thể mở rộng cho khách hàng điều chỉnh không gian và yêu cầu kết nối AWS của họ, bao gồm [AWS Direct Connect](https://aws.amazon.com/directconnect/) cho các workload intensive về compute và bandwidth.
+
+Khách hàng AWS có thể tìm thấy [giải pháp Secure Cloud Connect của Westway Services Group LLC trong AWS Marketplace](https://aws.amazon.com/marketplace/pp/prodview-khmlvp4olb7k6), cung cấp cho khách hàng các tùy chọn mua sắm được tăng tốc để dễ dàng quản lý chi tiêu liên quan đến cloud của họ trong một hóa đơn AWS hợp nhất duy nhất.
+
+Westway đã thiết lập chiến lược các địa điểm trên khắp đất nước cho các nhà thầu truy cập AWS, bao gồm Herndon và Chantilly, Virginia, St. Louis, Missouri, và Aurora, Colorado. Westway có kế hoạch mở rộng đến các địa điểm chiến lược bổ sung trên khắp Hoa Kỳ, bao gồm Huntsville, Alabama, vào năm 2026.
+
+## Hướng tới tương lai
+
+Quan hệ đối tác này đại diện cho một bước tiến đáng kể trong việc đưa đổi mới thương mại vào môi trường mật. Bằng cách loại bỏ các rào cản cơ sở hạ tầng truyền thống, chúng tôi đang cho phép nhiều công ty thương mại hơn đóng góp khả năng của họ cho các nhiệm vụ an ninh quốc gia trong khi vẫn duy trì các tiêu chuẩn bảo mật nghiêm ngặt.
+
+AWS và Westway Services sẽ làm việc chặt chẽ với khách hàng để điều hướng các yêu cầu nhiệm vụ cho việc onboarding và truy cập. Để biết thêm thông tin về việc truy cập [AWS Top Secret cloud](https://aws.amazon.com/federal/top-secret-cloud/) thông qua Secure Cloud Connect của Westway, hãy truy cập [danh sách của Westway trong AWS Marketplace](https://aws.amazon.com/marketplace/pp/prodview-khmlvp4olb7k6).
+
+Nếu bạn quan tâm đến việc tìm hiểu thêm về [AWS Top Secret cloud](https://aws.amazon.com/federal/top-secret-cloud), hãy điền vào biểu mẫu tại [AWS Top Secret Cloud – Liên hệ đội ngũ](https://pages.awscloud.com/top-secret-cloud-contact-us-interest.html) để liên hệ với đại diện.
 
 ---
 
-## The pub/sub hub
-
-Việc sử dụng kiến trúc **hub-and-spoke** (hay message broker) hoạt động tốt với một số lượng nhỏ các microservices liên quan chặt chẽ.  
-- Mỗi microservice chỉ phụ thuộc vào *hub*  
-- Kết nối giữa các microservice chỉ giới hạn ở nội dung của message được xuất  
-- Giảm số lượng synchronous calls vì pub/sub là *push* không đồng bộ một chiều
-
-Nhược điểm: cần **phối hợp và giám sát** để tránh microservice xử lý nhầm message.
-
----
-
-## Core microservice
-
-Cung cấp dữ liệu nền tảng và lớp truyền thông, gồm:  
-- **Amazon S3** bucket cho dữ liệu  
-- **Amazon DynamoDB** cho danh mục dữ liệu  
-- **AWS Lambda** để ghi message vào data lake và danh mục  
-- **Amazon SNS** topic làm *hub*  
-- **Amazon S3** bucket cho artifacts như mã Lambda
-
-> Chỉ cho phép truy cập ghi gián tiếp vào data lake qua hàm Lambda → đảm bảo nhất quán.
-
----
-
-## Front door microservice
-
-- Cung cấp API Gateway để tương tác REST bên ngoài  
-- Xác thực & ủy quyền dựa trên **OIDC** thông qua **Amazon Cognito**  
-- Cơ chế *deduplication* tự quản lý bằng DynamoDB thay vì SNS FIFO vì:
-  1. SNS deduplication TTL chỉ 5 phút
-  2. SNS FIFO yêu cầu SQS FIFO
-  3. Chủ động báo cho sender biết message là bản sao
-
----
-
-## Staging ER7 microservice
-
-- Lambda “trigger” đăng ký với pub/sub hub, lọc message theo attribute  
-- Step Functions Express Workflow để chuyển ER7 → JSON  
-- Hai Lambda:
-  1. Sửa format ER7 (newline, carriage return)
-  2. Parsing logic  
-- Kết quả hoặc lỗi được đẩy lại vào pub/sub hub
-
----
-
-## Tính năng mới trong giải pháp
-
-### 1. AWS CloudFormation cross-stack references
-Ví dụ *outputs* trong core microservice:
-```yaml
-Outputs:
-  Bucket:
-    Value: !Ref Bucket
-    Export:
-      Name: !Sub ${AWS::StackName}-Bucket
-  ArtifactBucket:
-    Value: !Ref ArtifactBucket
-    Export:
-      Name: !Sub ${AWS::StackName}-ArtifactBucket
-  Topic:
-    Value: !Ref Topic
-    Export:
-      Name: !Sub ${AWS::StackName}-Topic
-  Catalog:
-    Value: !Ref Catalog
-    Export:
-      Name: !Sub ${AWS::StackName}-Catalog
-  CatalogArn:
-    Value: !GetAtt Catalog.Arn
-    Export:
-      Name: !Sub ${AWS::StackName}-CatalogArn
+**TAGS:** [AWS Partner Network](https://aws.amazon.com/blogs/publicsector/category/aws-partner-network/), [Federal](https://aws.amazon.com/blogs/publicsector/category/public-sector/government/federal/), [Government](https://aws.amazon.com/blogs/publicsector/category/public-sector/government/), [Partner Solutions](https://aws.amazon.com/blogs/publicsector/category/post-types/partner-solutions/), [Public Sector](https://aws.amazon.com/blogs/publicsector/category/public-sector/)

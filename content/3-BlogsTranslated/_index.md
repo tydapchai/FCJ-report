@@ -1,26 +1,17 @@
 ---
 title: "Translated Blogs"
-date: "2025-09-11"
+date: "2024-09-11"
 weight: 3
 chapter: false
 pre: " <b> 3. </b> "
 ---
 
+###  [Blog 1 - Unlocking commercial AI models in AWS GovCloud (US): Secure cross-partition access with Amazon Bedrock](3.1-Blog1/)
+This blog presents three solutions that allow workloads in AWS GovCloud (US) to securely connect to the commercial partition of Amazon Web Services (AWS) to perform inference with Amazon Bedrock. Learn about public endpoints, AWS Site-to-Site VPN, and AWS Direct Connect options for cross-partition connectivity.
 
-###  [Blog 1 - Getting started with healthcare data lakes: Using microservices](3.1-Blog1/)
-This blog introduces how to start building a data lake in the healthcare sector by applying a microservices architecture. You will learn why data lakes are important for storing and analyzing diverse healthcare data (electronic medical records, lab test data, medical IoT devices…), how microservices help make the system more flexible, scalable, and easier to maintain. The article also guides you through the steps to set up the environment, organize the data processing pipeline, and ensure compliance with security & privacy standards such as HIPAA.
+###  [Blog 2 - Defending LLM applications against Unicode character smuggling](3.2-Blog2/)
+This blog explores Unicode tag blocks and how they can be used in exploits against AI systems. Learn about hidden character smuggling risks in LLMs and practical solutions using AWS Lambda and Amazon Bedrock Guardrails to protect your generative AI applications.
 
-###  [Blog 2 - ...](3.2-Blog2/)
-This blog introduces how to start building a data lake in the healthcare sector by applying a microservices architecture. You will learn why data lakes are important for storing and analyzing diverse healthcare data (electronic medical records, lab test data, medical IoT devices…), how microservices help make the system more flexible, scalable, and easier to maintain. The article also guides you through the steps to set up the environment, organize the data processing pipeline, and ensure compliance with security & privacy standards such as HIPAA.
+###  [Blog 3 - Westway and AWS partner to transform classified cloud innovation](3.3-Blog3/)
+This blog announces the partnership between AWS and Westway Services Group LLC to provide nontraditional defense contractors accelerated access to the AWS Top Secret cloud. Learn how this collaboration reduces onboarding time by over 70% and enables access to classified facilities in weeks rather than years.
 
-###  [Blog 3 - ...](3.3-Blog3/)
-This blog introduces how to start building a data lake in the healthcare sector by applying a microservices architecture. You will learn why data lakes are important for storing and analyzing diverse healthcare data (electronic medical records, lab test data, medical IoT devices…), how microservices help make the system more flexible, scalable, and easier to maintain. The article also guides you through the steps to set up the environment, organize the data processing pipeline, and ensure compliance with security & privacy standards such as HIPAA.
-
-###  [Blog 4 - ...](3.4-Blog4/)
-This blog introduces how to start building a data lake in the healthcare sector by applying a microservices architecture. You will learn why data lakes are important for storing and analyzing diverse healthcare data (electronic medical records, lab test data, medical IoT devices…), how microservices help make the system more flexible, scalable, and easier to maintain. The article also guides you through the steps to set up the environment, organize the data processing pipeline, and ensure compliance with security & privacy standards such as HIPAA.
-
-###  [Blog 5 - ...](3.5-Blog5/)
-This blog introduces how to start building a data lake in the healthcare sector by applying a microservices architecture. You will learn why data lakes are important for storing and analyzing diverse healthcare data (electronic medical records, lab test data, medical IoT devices…), how microservices help make the system more flexible, scalable, and easier to maintain. The article also guides you through the steps to set up the environment, organize the data processing pipeline, and ensure compliance with security & privacy standards such as HIPAA.
-
-###  [Blog 6 - ...](3.6-Blog6/)
-This blog introduces how to start building a data lake in the healthcare sector by applying a microservices architecture. You will learn why data lakes are important for storing and analyzing diverse healthcare data (electronic medical records, lab test data, medical IoT devices…), how microservices help make the system more flexible, scalable, and easier to maintain. The article also guides you through the steps to set up the environment, organize the data processing pipeline, and ensure compliance with security & privacy standards such as HIPAA.
