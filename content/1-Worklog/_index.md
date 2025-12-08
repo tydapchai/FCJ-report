@@ -6,14 +6,13 @@ chapter: false
 pre: " <b> 1. </b> "
 ---
 
-
 ## Internship Worklog Overview
 
 This worklog documents the completion of the **First Cloud Journey (FCJ)** internship program over **12 weeks**. Below is a comprehensive summary of the weekly objectives and accomplishments:
 
 ### Program Structure
 
-The internship is designed to provide a comprehensive understanding of AWS cloud services, from foundational concepts to advanced security, networking, and infrastructure practices. Each week builds upon previous knowledge, progressing from basic AWS fundamentals to specialized topics like Infrastructure as Code, security best practices, and hands-on implementations.
+The internship is designed to provide a comprehensive understanding of AWS cloud services, from foundational concepts to advanced security, networking, and infrastructure practices. Each week builds upon previous knowledge, progressing from basic AWS fundamentals to specialized topics like Infrastructure as Code, Serverless architecture, and hands-on team project development.
 
 ---
 
@@ -51,33 +50,35 @@ The internship is designed to provide a comprehensive understanding of AWS cloud
 - Objectives: Learn IaC tools and get started with NodeJS development
 - Key Topics: AWS CDK, Terraform, IaC concepts, NodeJS fundamentals
 
-**Week 9:** [Advanced Workshop & Implementation](1.9-week9/)
-- Objectives: Advance knowledge through structured workshops
-- Key Topics: Hands-on implementations, advanced AWS services
+**Week 9:** [AWS CDK & Three-Tier Architecture](1.9-week9/)
+- Objectives: Master AWS CDK for infrastructure deployment and complete team project milestones
+- Key Topics: CDK basics, ECS/ALB/API Gateway with CDK, Nested Stacks, Three-Tier Architecture via IaC, database design, Figma UI
 
-**Week 10:** [Intermediate Level Training](1.10-week10/)
-- Objectives: Build on foundational knowledge with intermediate concepts
-- Key Topics: Specialized AWS services, best practices
+**Week 10:** [Serverless Architecture & Hybrid Search](1.10-week10/)
+- Objectives: Build comprehensive Serverless backend and design Hybrid Search Engine
+- Key Topics: Lambda with S3/DynamoDB, API Gateway, CI/CD with CodePipeline, CloudWatch/X-Ray monitoring, Hybrid Search (keyword + semantic)
 
-**Week 11:** [Advanced Topics & Optimization](1.11-week11/)
-- Objectives: Explore advanced topics and optimization techniques
-- Key Topics: Performance tuning, cost optimization, architectural patterns
+**Week 11:** [API Flow Design - User Submissions & Photo Upload](1.11-week11/)
+- Objectives: Design user-generated content flows for team project
+- Key Topics: Flow 1 (Submit New Place with validation, pg_trgm duplicate detection, admin approval, SQS embedding), Flow 2 (S3 presigned URL photo upload, CDN integration)
 
-**Week 12:** [Capstone & Completion](1.12-week12/)
-- Objectives: Finalize internship with capstone project or advanced topics
-- Key Topics: Integration of learned concepts, real-world applications
+**Week 12:** [API Flow Design - Social Interactions](1.12-week12/)
+- Objectives: Design social interaction APIs for team project
+- Key Topics: Flow 3 (Review Voting with toggle logic), Flow 4 (Comment Threading with parent_comment_id), favorites, comment likes, user activity tracking
 
 ---
 
 ## Key Achievements Across All Weeks
 
--  Mastered fundamental AWS services (EC2, S3, RDS, Lambda, etc.)
--  Understood cloud security and the shared responsibility model
--  Learned database migration strategies and tools
--  Explored Infrastructure as Code with AWS CDK and Terraform
--  Gained practical experience with hands-on exercises and labs
--  Prepared for AWS certifications through comprehensive study
--  Developed skills in modern DevOps and cloud architecture
+- Mastered fundamental AWS services (EC2, S3, RDS, Lambda, API Gateway, DynamoDB)
+- Understood cloud security and the shared responsibility model
+- Learned database migration strategies and tools
+- Explored Infrastructure as Code with AWS CDK and Terraform
+- Built Serverless applications with CI/CD pipelines (CodePipeline, SAM)
+- Implemented monitoring and tracing with CloudWatch and X-Ray
+- Designed complete API flows for production applications
+- Developed team project: Hybrid Search Engine with user-generated content system
+- Gained practical experience with hands-on exercises and FCJ labs
 
 ---
 
@@ -89,6 +90,7 @@ The internship follows a structured learning progression:
 2. **Weeks 3-4**: Advanced Compute, Database & Networking
 3. **Weeks 5-6**: Storage, Analytics, Security & Cost Management
 4. **Weeks 7-8**: Exam Preparation & Infrastructure as Code
-5. **Weeks 9-12**: Advanced Implementation & Specialization
+5. **Weeks 9-10**: CDK, Serverless Architecture & Team Project Backend
+6. **Weeks 11-12**: API Design & Team Project Implementation
 
 Each week includes both conceptual learning and hands-on practice, ensuring a balance between theoretical knowledge and practical skills.

@@ -1,145 +1,328 @@
 ---
 title: "Event 3"
-date: "2025-10-15"
+date: "2025-11-15"
 weight: 3
 chapter: false
 pre: " <b> 4.3. </b> "
 ---
-# Summary Report: "​AI/ML/GenAI on AWS"
+# Summary Report: "AIML & Generative AI on AWS – AWS Cloud Mastery Series #1"
 
-### Event Objectives
+## Event Overview
 
-- Explore Amazon's comprehensive suite of AI services and their real-world applications  
-- Understand computer vision capabilities through Amazon Rekognition  
-- Learn about neural machine translation and real-time language processing  
-- Discover document analysis and text extraction services  
-- Experience speech-to-text and text-to-speech conversion technologies  
-- Gain insights into natural language processing and intelligent search solutions  
-- Understand recommendation systems and conversational AI frameworks  
+| | |
+|---|---|
+| **Event Name** | AIML & Generative AI on AWS – AWS Cloud Mastery Series #1 |
+| **Date** | November 15, 2025 |
+| **Role** | Attendee |
+| **Format** | On-site technical session |
+| **Duration** | Full-day session (8:30 AM – 11:00 AM+) |
+| **Location** | 26th floor, Bitexco Financial Tower, District 1, Ho Chi Minh City, Vietnam |
 
-### Key Highlights
+This comprehensive technical session was part of the AWS Cloud Mastery Series, focusing specifically on artificial intelligence, machine learning, and generative AI capabilities on AWS. The event provided both theoretical foundations and practical insights into building AI/ML solutions using AWS services.
 
-- Comprehensive overview of Amazon's AI service portfolio covering vision, language, speech, and search  
-- Deep dive into computer vision services with detection, analysis, comparison, and recognition capabilities  
-- Exploration of neural machine translation for real-time multilingual communication  
-- Introduction to document processing and text extraction technologies  
-- Overview of conversational AI frameworks for real-time streaming voice assistants  
+---
 
-### Considerable Benefits
+## Session Agenda
 
-- Gain practical knowledge of AWS AI services applicable to various business use cases  
-- Understand how to leverage AI services for automation and intelligent decision-making  
-- Learn about custom labeling and self-trained models for specialized applications  
-- Discover integration patterns for building end-to-end AI-powered solutions  
+### Session 1: AI/ML Overview (8:30 – 9:00 AM)
+**Speaker:** Lam Tuan Kiet
 
-### Key Takeaways
+#### Machine Learning Fundamentals
+- **Supervised Learning:** Understanding tasks where models learn from labeled data
+  - Classification: Categorizing data into classes
+  - Regression: Predicting continuous values
+  - Common algorithms and use cases
+- **Deep Learning:** Neural networks and their applications
+  - Multi-layer perceptrons
+  - Convolutional Neural Networks (CNNs) for image processing
+  - Recurrent Neural Networks (RNNs) for sequence data
+  - Transformers architecture
 
-#### Computer Vision & Image Analysis
+#### Foundation Models and Generative AI
+- **Foundation Models:** Large pre-trained models that serve as the base for various tasks
+  - What makes a model a "foundation model"
+  - Benefits of using pre-trained models
+  - Transfer learning concepts
+- **Generative Models:** Models that create new content
+  - Understanding unsupervised learning in the context of generative AI
+  - How generative models differ from discriminative models
+  - Applications: text generation, image generation, code generation
 
-- **Amazon Rekognition** provides comprehensive computer vision capabilities  
-- Supports multiple tasks: detection, analysis, comparison, and recognition  
-- Custom labeling feature enables self-trained models for domain-specific use cases  
-- Ideal for content moderation, facial recognition, and object detection applications  
+#### Prompt Engineering
+- **What is a prompt?:** Understanding prompts as instructions to AI models
+- **Good vs Bad Prompts:**
+  - Characteristics of effective prompts (clear, specific, contextual)
+  - Common mistakes in prompt design
+  - Examples of poorly constructed prompts and how to improve them
+- **Zero-shot Prompting:** Getting results without examples
+  - When zero-shot works well
+  - Limitations and considerations
+- **Few-shot Prompting:** Providing examples to guide model behavior
+  - How few-shot learning improves results
+  - Best practices for selecting examples
+  - Balancing example quality and quantity
 
-#### Language & Translation Services
+#### Chain of Thought Reasoning
+- **What is Chain of Thought?:** Breaking down complex problems into steps
+- **Benefits:** Improving reasoning capabilities of language models
+- **Implementation:** How to structure prompts to encourage step-by-step thinking
+- **Applications:** Problem-solving, mathematical reasoning, logical analysis
 
-- **Amazon Translate** offers neural machine translation service  
-- Enables real-time translation for multilingual applications  
-- Supports seamless integration for global communication needs  
+#### Retrieval-Augmented Generation (RAG)
+- **RAG Overview:** Combining retrieval with generation for better accuracy
+- **RAG Flow:**
+  - Retrieval: Finding relevant information from knowledge bases
+  - Augmentation: Enhancing prompts with retrieved context
+  - Generation: Creating responses based on augmented prompts
+- **Embeddings:**
+  - What embeddings are and how they represent semantic meaning
+  - Vector embeddings vs traditional keyword search
+  - How embeddings enable semantic search
+- **Amazon Titan Embeddings:**
+  - AWS's embedding model capabilities
+  - Use cases for Titan embeddings
+  - Integration with other AWS services
+- **RAG Workflows:**
+  - Data Ingestion Workflow: Preparing and indexing documents for retrieval
+    - Document processing and chunking
+    - Generating embeddings
+    - Storing in vector databases
+  - Text Generation Workflow: Using RAG for query answering
+    - Query processing and embedding
+    - Similarity search
+    - Context augmentation
+    - Response generation
 
-#### Document Processing
+---
 
-- **Amazon Textract** extracts text and layouts from documents  
-- Automates data extraction from forms, invoices, and structured documents  
-- Reduces manual data entry and improves accuracy  
+### Session 2: AWS AI/ML Services (9:00 – 10:00 AM)
+**Speaker:** Dinh Le Hoang Anh
 
-#### Speech Services
+This session provided a comprehensive overview of AWS's managed AI/ML services beyond Amazon Bedrock, covering specialized services for different use cases.
 
-- **Amazon Transcribe** converts speech to text with high accuracy  
-- Supports real-time transcription for live events and meetings  
-- **Amazon Polly** provides text-to-speech service  
-- Enables natural-sounding voice synthesis for accessibility and automation  
+#### Computer Vision Services
 
-#### Natural Language Processing
+**Amazon Rekognition**
+- **Image and Video Processing:** Analyzing visual content at scale
+- **Object Recognition:** Identifying and labeling objects in images
+- **Face Detection and Analysis:**
+  - Detecting faces in images and videos
+  - Face comparison and verification
+  - Facial attribute analysis
+- **Content Moderation:**
+  - Detecting inappropriate or unsafe content
+  - Custom moderation models
+- **Celebrity Recognition:** Identifying well-known personalities
+- **Custom Labeling:**
+  - Training custom models for specific recognition tasks
+  - Use cases for domain-specific image classification
+  - Workflow for creating custom models
 
-- **Amazon Comprehend** offers comprehensive NLP processing service  
-- Extracts insights and relationships from unstructured text  
-- Enables sentiment analysis, entity recognition, and topic modeling  
-- Supports custom models for domain-specific language understanding  
+#### Natural Language Processing Services
 
-#### Intelligent Search
+**Amazon Translate**
+- **Context-Aware Translation:** Understanding context for better translations
+- **Real-time Translation:** Low-latency translation for applications
+- **Language Identification:** Automatically detecting source language
+- **Custom Terminology:** Using domain-specific translation glossaries
+- **Batch Translation:** Processing large volumes of text
 
-- **Amazon Kendra** provides intelligent search service  
-- Delivers accurate, context-aware search results  
-- Understands natural language queries and provides relevant answers  
+**Amazon Textract**
+- **Optical Character Recognition (OCR):** Extracting text from images and documents
+- **Layout Preservation:** Maintaining document structure and formatting
+- **Form and Table Extraction:** Identifying and extracting structured data
+- **Handwriting Recognition:** Processing handwritten text
+- **Document Analysis:** Understanding document types and extracting key information
 
-#### Anomaly Detection & Monitoring
+**Amazon Transcribe**
+- **Speech-to-Text Conversion:** Converting audio to text
+- **Speaker Identification:** Distinguishing between different speakers
+- **Content Filtering:** Filtering inappropriate content in transcriptions
+- **Custom Vocabulary:** Improving accuracy with domain-specific terms
+- **Real-time Transcription:** Live transcription capabilities
+- **Multi-language Support:** Transcribing in multiple languages
 
-- **Amazon Lookout Family** offers anomaly detection capabilities  
-- Monitors equipment and processes for predictive maintenance  
-- Detects anomalies in time-series data and operational metrics  
+**Amazon Polly**
+- **Text-to-Speech:** Converting text to natural-sounding speech
+- **Voice Types:** Multiple voices and languages available
+- **Real-time Synthesis:** Low-latency speech generation
+- **Caching and Replay:** Optimizing for repeated content
+- **SSML Support:** Advanced speech synthesis markup
 
-#### Personalization & Recommendations
+**Amazon Comprehend**
+- **Insight Extraction:** Understanding sentiment, entities, and key phrases
+- **Relationship Extraction:** Identifying relationships between entities
+- **Topic Modeling:** Discovering topics in document collections
+- **Language Detection:** Identifying the language of text
+- **Custom Classification:** Training custom text classifiers
 
-- **Amazon Personalize** tailors recommendations to individual users  
-- Builds custom recommendation models without machine learning expertise  
-- Improves user engagement through personalized experiences  
+#### Search and Discovery Services
 
-#### Conversational AI Frameworks
+**Amazon Kendra**
+- **Semantic Search:** Understanding meaning, not just keywords
+- **Intelligent Search:** NLP-powered search capabilities
+- **RAG Support:** Integration with retrieval-augmented generation
+- **Enterprise Search:** Searching across multiple data sources
+- **Custom Data Sources:** Connecting to various content repositories
 
-- **Pipecat** framework enables real-time/streaming conversational voice assistants  
-- Supports building interactive voice applications with low latency  
-- Facilitates natural, flowing conversations in voice-enabled systems  
+#### Recommendation Services
 
-### Applying to Work
+**Amazon Personalize**
+- **Tailored Recommendations:** Creating personalized user experiences
+- **Real-time Recommendations:** Low-latency recommendation generation
+- **Batch Recommendations:** Processing recommendations for large user bases
+- **Custom Models:** Training models on your data
+- **A/B Testing:** Testing different recommendation strategies
 
-- Implement Amazon Rekognition for automated content moderation and image analysis  
-- Integrate Amazon Translate for multilingual customer support and documentation  
-- Use Amazon Textract to automate document processing and data extraction workflows  
-- Deploy Amazon Transcribe and Polly for accessibility features and voice-enabled applications  
-- Leverage Amazon Comprehend for sentiment analysis and customer feedback processing  
-- Implement Amazon Kendra for intelligent search capabilities in knowledge bases  
-- Utilize Amazon Personalize to enhance user experience with personalized recommendations  
-- Explore Pipecat for building conversational voice interfaces and virtual assistants  
+#### Specialized Frameworks
 
-### Event Experience
+**Pipecat**
+- **Pipeline Framework:** Building voice and multimodal AI agents
+- **Real-time Capabilities:** Optimized for real-time interactions
+- **Use Cases:** Voice assistants, interactive applications
+- **Integration:** Working with AWS services and other AI tools
 
-Attending the **Amazon AI Services Workshop** provided a comprehensive understanding of AWS's AI/ML service portfolio, demonstrating how these services can be integrated to build intelligent, automated solutions.
+**Amazon Lookout Family**
+- *Note:* These services have been integrated into other AWS services
+- **Historical Context:** Understanding what Lookout services provided
+- **Migration Path:** How functionality moved to other services
 
-#### Learning from AWS AI Services
+---
 
-- Gained deep insights into the breadth of Amazon's AI service offerings  
-- Understood the practical applications of each service across different industries  
-- Learned about integration patterns for combining multiple AI services  
+### Session 3: Amazon Bedrock AgentCore (10:00 – 11:00 AM)
+**Speaker:** Danh Hoang Hieu Nghi
 
-#### Technical Deep-Dive
+This session focused on building AI agents using Amazon Bedrock AgentCore, covering both the concepts and practical implementation.
 
-- Explored computer vision capabilities for image and video analysis  
-- Discovered language processing services for multilingual applications  
-- Understood speech services for voice-enabled solutions  
-- Learned about intelligent search and recommendation systems  
+#### Agent Frameworks Overview
+- **LangGraph:** Building stateful, multi-actor applications with LLMs
+- **LangChain:** Framework for developing applications powered by language models
+- **LlamaIndex:** Data framework for LLM applications
+- **Comparison:** Understanding when to use each framework
+- **Integration:** How these frameworks work with AWS services
 
-#### Exploring Use Cases
+#### Agent Creation Process
+- **Planning Phase:** Defining agent goals and capabilities
+- **Design Phase:** Architecting agent workflows and decision trees
+- **Development Phase:** Implementing agent logic and integrations
+- **Testing Phase:** Validating agent behavior and edge cases
+- **Deployment Phase:** Putting agents into production
 
-- Document automation using Textract for form processing  
-- Content moderation using Rekognition for image and video analysis  
-- Multilingual support using Translate for global applications  
-- Voice interfaces using Transcribe, Polly, and Pipecat for conversational AI  
-- Personalized experiences using Personalize for recommendation engines  
+#### Production Challenges
+- **Scalability:** Handling increasing load and concurrent users
+- **Reliability:** Ensuring consistent performance and error handling
+- **Monitoring:** Tracking agent performance and user interactions
+- **Cost Management:** Optimizing costs while maintaining quality
+- **Security:** Protecting sensitive data and preventing misuse
 
-#### Key Lessons Learned
+#### Amazon Bedrock AgentCore Keywords
 
-- AWS AI services provide pre-trained models that reduce development time  
-- Custom labeling enables domain-specific model training without deep ML expertise  
-- Integration of multiple AI services creates powerful end-to-end solutions  
-- Real-time processing capabilities enable responsive, interactive applications  
+**Runtime**
+- Execution Environment: Where agents run and execute
+- Performance Optimization: Ensuring fast response times
+- Resource Management: Allocating and managing compute resources
+
+**Memory**
+- Conversation History: Maintaining context across interactions
+- Long-term Memory: Storing information for future sessions
+- Memory Management: Efficient storage and retrieval strategies
+
+**Identity**
+- User Identification: Identifying and authenticating users
+- Session Management: Managing user sessions and state
+- Multi-user Support: Handling multiple concurrent users
+
+**Gateway**
+- API Gateway: Exposing agents through APIs
+- Integration Points: Connecting agents to other systems
+- Request Routing: Directing requests to appropriate agents
+
+**Code Interpreter**
+- Code Execution: Running code within agent workflows
+- Sandboxing: Safe execution environment
+- Use Cases: Data analysis, calculations, dynamic content generation
+
+**Browser Tool**
+- Web Interaction: Enabling agents to interact with web content
+- Information Retrieval: Fetching and processing web data
+- Automation: Automating web-based tasks
+
+**Observability**
+- Monitoring: Tracking agent performance and behavior
+- Logging: Recording agent interactions and decisions
+- Analytics: Understanding agent usage patterns
+- Debugging: Tools for troubleshooting agent issues
+
+#### AgentCore Services for Scale
+- **Multi-agent Systems:** Coordinating multiple agents
+- **Load Balancing:** Distributing load across agent instances
+- **Auto-scaling:** Automatically adjusting capacity
+- **High Availability:** Ensuring agents are always available
+- **Enterprise Features:** Security, compliance, and governance
+
+---
+
+## Key Technical Learnings
+
+### AI/ML Fundamentals
+- Clear understanding of the difference between traditional ML, deep learning, and generative AI
+- How foundation models enable new types of applications
+- The importance of prompt engineering in getting good results from generative models
+
+### RAG Architecture
+- Complete understanding of RAG workflows from data ingestion to text generation
+- How embeddings enable semantic search and improve retrieval quality
+- Practical knowledge of implementing RAG systems on AWS
+
+### AWS Service Ecosystem
+- Comprehensive overview of AWS AI/ML services and when to use each
+- Understanding that different services solve different problems
+- How services can be combined for complex solutions
+
+### Agent Development
+- Understanding the complexity of building production-ready AI agents
+- Key components needed for scalable agent systems
+- Best practices for agent design and deployment
+
+---
+
+## Personal Takeaways
+
+### Technical Growth
+- Gained a structured mental model of the modern GenAI stack on AWS
+- Understand how RAG pipelines are built end-to-end, from data preparation to response generation
+- Learned which managed services to combine when designing AI-powered applications
+
+### Practical Insights
+- The importance of prompt engineering cannot be overstated
+- RAG is a powerful pattern for building accurate, context-aware AI applications
+- AWS provides a comprehensive set of services that cover the entire AI/ML spectrum
+
+### Future Applications
+- Excited to build RAG-based applications using Amazon Bedrock and Titan embeddings
+- Want to explore building agents using AgentCore for specific use cases
+- See opportunities to combine multiple AWS AI services for comprehensive solutions
+
+### Career Development
+- This event reinforced my interest in AI/ML and generative AI
+- Understand the breadth of opportunities in the AI space on AWS
+- Motivated to continue learning about advanced AI/ML techniques and AWS services
+
+---
+
+## Event Experience
+
+This was an incredibly informative event that provided both breadth and depth. The progression from fundamentals to specific services to advanced agent development gave me a complete picture of AI/ML on AWS.
+
+The speakers were knowledgeable and provided practical insights beyond just feature descriptions. The real-world examples and use cases helped me understand how to apply these services in practice.
+
+The event structure allowed for good pacing, with each session building on previous concepts. The combination of theory and practical examples made complex topics accessible.
 
 #### Event Photos
 
 ![Event Overview - AI/ML/GenAI on AWS Workshop with audience](/images/event-3/workshop-overview.png) 
 
-![Presentation Session ](/images/event-3/demo-session.png)
-
+![Presentation Session](/images/event-3/demo-session.png)
 
 ![Kahoot Winners - Group photo with Kahoot quiz session](/images/event-3/kahoot-winners.png)
 
@@ -155,6 +338,4 @@ Attending the **Amazon AI Services Workshop** provided a comprehensive understan
 
 ![Prototype to Production Chasm - Challenges on the path to production](/images/event-3/prototype-production-chasm.png)
 
-![Frameworks for Building Agents - Embracing open source frameworks](/images/event-3/frameworks-agents.png) 
-
-> Overall, this workshop equipped me with comprehensive knowledge of Amazon AI services, enabling me to identify opportunities for implementing intelligent automation and AI-powered features in future projects.
+![Frameworks for Building Agents - Embracing open source frameworks](/images/event-3/frameworks-agents.png)

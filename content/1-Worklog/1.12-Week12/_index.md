@@ -5,53 +5,43 @@ weight: 2
 chapter: false
 pre: " <b> 1.12. </b> "
 ---
-{{% notice warning %}} 
-⚠️ **Note:** The following information is for reference purposes only. Please **do not copy verbatim** for your own report, including this warning.
-{{% /notice %}}
 
+### OBJECTIVES IN WEEK 12:
+- Design Flow 3: Review Voting - implementing upvote/downvote toggle system with count management.
+- Design Flow 4: Comment Threading - building nested comment system with thread depth tracking.
+- Define database schema for social interactions (votes, comments, comment_likes, favorites).
+- Plan user activity tracking and analytics integration.
 
-### Week 12 Objectives:
+### TASKS OF WEEK 12:
+| Day | Task | Start Date | End Date | References |
+|-----|------|------------|----------|------------|
+| Mon | - Team Project Meeting: Social Interaction APIs <br> &emsp; - Design Flow 3: Review Voting <br> &emsp;&emsp; * POST /reviews/vote endpoint <br> &emsp;&emsp; * vote_type: "upvote" or "downvote" <br> &emsp;&emsp; * Toggle logic: new vote -> insert + increment | 24/11/2025 | 24/11/2025 | |
+| Tue | - Continue Flow 3 Implementation <br> &emsp; - Vote toggle behaviors: <br> &emsp;&emsp; * Same vote clicked -> delete + decrement (toggle off) <br> &emsp;&emsp; * Different vote clicked -> update + adjust both counts <br> &emsp; - Define votes table schema and constraints | 25/11/2025 | 25/11/2025 | |
+| Wed | - Design Flow 4: Comment Threading <br> &emsp; - POST /reviews/comment endpoint <br> &emsp;&emsp; * parent_comment_id provided -> Reply (thread_depth++) <br> &emsp;&emsp; * No parent -> Top-level comment <br> &emsp; - Increment comment_count on target (review/restaurant) | 26/11/2025 | 26/11/2025 | |
+| Thu | - Design Additional Features <br> &emsp; - Favorites system: POST /restaurants/:id/favorite <br> &emsp; - Comment likes: POST /comments/:id/like <br> &emsp; - User activity tracking: user_activities table <br> &emsp; - Analytics event logging for user interactions | 27/11/2025 | 27/11/2025 | |
+| Fri | - Team Project Meeting: Complete API Documentation <br> &emsp; - Finalize Flow 3 & Flow 4 specifications <br> &emsp; - Document all database tables: votes, comments, comment_likes, favorites, user_activities <br> &emsp; - Review complete API flow documentation | 28/11/2025 | 28/11/2025 | |
 
-* Connect and get acquainted with members of First Cloud Journey.
-* Understand basic AWS services, how to use the console & CLI.
+### ACHIEVEMENTS IN WEEK 12:
+1. Designed complete Flow 3 (Review Voting):
+   - POST /reviews/vote with vote_type parameter (upvote/downvote)
+   - Implemented toggle logic: new vote inserts and increments count
+   - Same vote toggle: deletes record and decrements count
+   - Vote change: updates record and adjusts both upvote_count and downvote_count
 
-### Tasks to be carried out this week:
-| Day | Task                                                                                                                                                                                                   | Start Date | Completion Date | Reference Material                        |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------- | --------------- | ----------------------------------------- |
-| 2   | - Get acquainted with FCJ members <br> - Read and take note of internship unit rules and regulations                                                                                                   | 08/11/2025 | 08/11/2025      |
-| 3   | - Learn about AWS and its types of services <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                              | 08/12/2025 | 08/12/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Create AWS Free Tier account <br> - Learn about AWS Console & AWS CLI <br> - **Practice:** <br>&emsp; + Create AWS account <br>&emsp; + Install & configure AWS CLI <br> &emsp; + How to use AWS CLI | 08/13/2025 | 08/13/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Learn basic EC2: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - SSH connection methods to EC2 <br> - Learn about Elastic IP   <br>                            | 08/14/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Practice:** <br>&emsp; + Launch an EC2 instance <br>&emsp; + Connect via SSH <br>&emsp; + Attach an EBS volume                                                                                     | 08/15/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
+2. Designed complete Flow 4 (Comment Threading):
+   - POST /reviews/comment for creating comments on reviews/restaurants
+   - Nested reply system using parent_comment_id
+   - thread_depth tracking for proper indentation display
+   - Automatic comment_count increment on target entity
 
+3. Designed additional social features:
+   - Favorites system for saving restaurants (favorites table)
+   - Comment likes functionality (comment_likes table)
+   - User activity tracking for analytics (user_activities table)
 
-### Week 12 Achievements:
-
-* Understood what AWS is and mastered the basic service groups: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
-
-* Successfully created and configured an AWS Free Tier account.
-
-* Became familiar with the AWS Management Console and learned how to find, access, and use services via the web interface.
-
-* Installed and configured AWS CLI on the computer, including:
-  * Access Key
-  * Secret Key
-  * Default Region
-  * ...
-
-* Used AWS CLI to perform basic operations such as:
-
-  * Check account & configuration information
-  * Retrieve the list of regions
-  * View EC2 service
-  * Create and manage key pairs
-  * Check information about running services
-  * ...
-
-* Acquired the ability to connect between the web interface and CLI to manage AWS resources in parallel.
-* ...
+4. Documented complete database schema:
+   - votes (upvotes/downvotes on reviews)
+   - comments (comments on reviews/restaurants with threading)
+   - comment_likes (likes on comments)
+   - favorites (saved restaurants by users)
+   - user_activities (analytics tracking for user interactions)

@@ -17,11 +17,11 @@ pre: " <b> 1.8. </b> "
 ### TASKS FOR WEEK 8:
 | Day | Task                                                                                  | Start Date | Completion Date | Reference Material                        |
 |-----|---------------------------------------------------------------------------------------|------------|-----------------|-------------------------------------------|
-| 2   | - Continue exam review and practice <br> - Introduction to IaC concepts <br> - Learn benefits of Infrastructure as Code | 27/10/2025 | 27/10/2025      | [IaC Concepts](https://www.youtube.com/watch?v=POPP2WTJ-QA) |
-| 3   | - Introduction to AWS CDK <br> - Learn CDK basics and structure <br> - Complete practice quiz on IaC & CDK | 28/10/2025 | 28/10/2025      | [AWS CDK Tutorial](https://www.youtube.com/watch?v=T-H4dJLDs3o) |
-| 4   | - Introduction to Terraform <br> - Learn Terraform syntax and configuration <br> - Compare CDK vs Terraform | 29/10/2025 | 29/10/2025      | [Terraform Tutorial](https://www.youtube.com/watch?v=l5k1ai_GBDE) |
-| 5   | - NodeJS basics and fundamentals <br> - Install NodeJS and npm <br> - Basic NodeJS syntax and modules | 30/10/2025 | 30/10/2025      | <https://nodejs.org/> |
-| 6   | - Continue exam preparation <br> - Practice hands-on with CDK or Terraform examples <br> - NodeJS practice exercises | 31/10/2025 | 31/10/2025      | [Node.js Practice](https://www.youtube.com/watch?v=RLtQcvxrfp4) |
+| 2   | - Continue exam review and practice <br> - Introduction to IaC concepts <br> - Learn benefits of Infrastructure as Code | 27/10/2025 | 27/10/2025      | [AWS IaC](https://docs.aws.amazon.com/whitepapers/latest/introduction-devops-aws/infrastructure-as-code.html) |
+| 3   | - Introduction to AWS CDK <br> - Learn CDK basics and structure | 28/10/2025 | 28/10/2025      | [AWS CDK Docs](https://docs.aws.amazon.com/cdk/v2/guide/home.html) |
+| 4   | - Introduction to Terraform <br> - Learn Terraform syntax and configuration <br> - Compare CDK vs Terraform | 29/10/2025 | 29/10/2025      | [Terraform Docs](https://developer.hashicorp.com/terraform/docs) |
+| 5   | - NodeJS basics and fundamentals <br> - Install NodeJS and npm <br> - Basic NodeJS syntax and modules | 30/10/2025 | 30/10/2025      | [Node.js Docs](https://nodejs.org/docs/latest/api/) |
+| 6   | - Continue exam preparation <br> - Practice hands-on with CDK or Terraform examples <br> - NodeJS practice exercises | 31/10/2025 | 31/10/2025      | [Node.js Learn](https://nodejs.org/en/learn) |
 
 ### ACHIEVEMENTS FOR WEEK 8:
 1. Successfully continued exam preparation with comprehensive review
