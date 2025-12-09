@@ -43,4 +43,4 @@ Kiến trúc MapVibe tuân theo phương pháp serverless-first:
 6. **Xác thực**: AWS Cognito để quản lý người dùng
 7. **Bảo mật**: WAF để bảo vệ, Route53 và ACM cho tên miền tùy chỉnh
 
-![overview](/images/5-workshop/Architechture.png)
+![overview](/images/proposal/Architechture.png)
