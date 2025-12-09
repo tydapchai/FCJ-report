@@ -43,4 +43,4 @@ The MapVibe architecture follows a serverless-first approach:
 6. **Authentication**: AWS Cognito for user management
 7. **Security**: WAF for protection, Route53 and ACM for custom domains
 
-![overview](/images/5-Workshop/4N1D-Architechture.drawio.png)
+![overview](/images/workshop-5/Architechture.png)
