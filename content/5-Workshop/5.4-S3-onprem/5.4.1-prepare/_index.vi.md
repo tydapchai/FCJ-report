@@ -1,58 +1,75 @@
 ---
-title : "Chuẩn bị tài nguyên"
-date : "2025-09-11"
+title : "Thiết lập Terraform"
+date: 2025-09-09
 weight : 1
 chapter : false
 pre : " <b> 5.4.1 </b> "
+
 ---
 
-Để chuẩn bị cho phần này của workshop, bạn sẽ cần phải:
-+ Triển khai CloudFormation stack
-+ Sửa đổi bảng định tuyến VPC.
+#### Yêu cầu tiên quyết
 
-Các thành phần này hoạt động cùng nhau để mô phỏng DNS forwarding và name resolution.
+Trước khi triển khai hạ tầng, hãy đảm bảo bạn có:
 
-#### Triển khai CloudFormation stack
+1. **Terraform đã cài đặt** (>= 1.0)
+2. **AWS CLI đã cấu hình** với credentials phù hợp
+3. **Tài khoản AWS** với các quyền cần thiết
 
-Mẫu CloudFormation sẽ tạo các dịch vụ bổ sung để hỗ trợ mô phỏng môi trường truyền thống:
-+ Một Route 53 Private Hosted Zone lưu trữ các bản ghi Bí danh (Alias records) cho điểm cuối PrivateLink S3
-+ Một Route 53 Inbound Resolver endpoint cho phép "VPC Cloud" giải quyết các yêu cầu resolve DNS gửi đến Private Hosted Zone
-+ Một Route 53 Outbound Resolver endpoint cho phép "VPC On-prem" chuyển tiếp các yêu cầu DNS cho S3 sang "VPC Cloud"
+#### Cấu hình Biến Terraform
 
-![route 53 diagram](/images/5-Workshop/5.4-S3-onprem/route53.png)
+Điều hướng đến thư mục infrastructure:
 
-1. Click link sau để mở [AWS CloudFormation console](https://us-east-1.console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/quickcreate?templateURL=https://s3.amazonaws.com/reinvent-endpoints-builders-session/R53CF.yaml&stackName=PLOnpremSetup). Mẫu yêu cầu sẽ được tải sẵn vào menu. Chấp nhận tất cả mặc định và nhấp vào Tạo stack.
+```bash
+cd infrastructure/terraform
+```
 
-![Create stack](/images/5-Workshop/5.4-S3-onprem/create-stack.png)
+Tạo file `terraform.tfvars` (hoặc sử dụng biến môi trường):
 
-![Button](/images/5-Workshop/5.4-S3-onprem/create-stack-button.png)
+```hcl
+aws_region     = "ap-southeast-1"
+environment    = "mvp"
+project_name   = "mapvibe"
+db_name        = "mapvibe"
 
-Có thể mất vài phút để triển khai stack hoàn tất. Bạn có thể tiếp tục với bước tiếp theo mà không cần đợi quá trình triển khai kết thúc.
+# Tùy chọn: Google OAuth
+google_client_id     = ""
+google_client_secret = ""
+```
 
-####  Cập nhật bảng định tuyến private on-premise 
+#### Khởi tạo Terraform
 
-Workshop này sử dụng StrongSwan VPN chạy trên EC2 instance để mô phỏng khả năng kết nối giữa trung tâm dữ liệu truyền thống và môi trường cloud AWS. Hầu hết các thành phần bắt buộc đều được cung cấp trước khi bạn bắt đầu. Để hoàn tất cấu hình VPN, bạn sẽ sửa đổi bảng định tuyến "VPC on-prem" để hướng lưu lượng đến cloud đi qua StrongSwan VPN instance.
+Khởi tạo Terraform để tải providers:
 
-1. Mở Amazon EC2 console 
+```bash
+terraform init
+```
 
-2. Chọn instance tên infra-vpngw-test. Từ Details tab, copy Instance ID và paste vào text editor của bạn để sử dụng ở những bước tiếp theo
+Lệnh này sẽ:
+- Tải AWS provider
+- Thiết lập backend (nếu được cấu hình)
+- Khởi tạo modules
 
-![ec2 id](/images/5-Workshop/5.4-S3-onprem/ec2-onprem-id.png)
+#### Xem lại Terraform Plan
 
-3. Đi đến VPC menu bằng cách gõ "VPC" vào Search box
+Trước khi apply, xem lại những gì sẽ được tạo:
 
-4. Click vào Route Tables, chọn RT Private On-prem route table, chọn Routes tab, và click Edit Routes.
+```bash
+terraform plan
+```
 
-![rt](/images/5-Workshop/5.4-S3-onprem/rt.png)
+Lệnh này hiển thị:
+- Tài nguyên sẽ được tạo
+- Tài nguyên sẽ được sửa đổi
+- Tài nguyên sẽ bị xóa
 
-5. Click Add route.
-+ Destination: CIDR block của Cloud VPC
-+ Target: ID của infra-vpngw-test instance (bạn đã lưu lại ở bước trên)
+#### Lưu ý quan trọng
 
-![add route](/images/5-Workshop/5.4-S3-onprem/add-route.png)
+- **Chi phí**: Hạ tầng này sẽ tạo các tài nguyên AWS có tính phí
+- **Region**: Mặc định là `ap-southeast-1` (Singapore)
+- **WAF**: Yêu cầu `us-east-1` cho CloudFront (được xử lý tự động)
+- **Database**: Instance RDS sẽ được tạo (db.t3.micro cho MVP)
+- **Domain**: Bạn sẽ cần tên miền cho Route53 (ví dụ: mapvibe.site)
 
-6. Click Save changes
+#### Bước tiếp theo
 
-
-
-
+Sau khi Terraform được khởi tạo và cấu hình, tiến hành triển khai hạ tầng.

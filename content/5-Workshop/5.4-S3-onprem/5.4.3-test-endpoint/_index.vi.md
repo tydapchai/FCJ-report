@@ -1,55 +1,92 @@
 ---
-title : "Kiểm tra Interface Endpoint"
-date : "2025-09-11"
+title : "Xác minh Triển khai"
+date: 2025-09-09
 weight : 3
 chapter : false
 pre : " <b> 5.4.3 </b> "
+
 ---
 
-#### Lấy regional DNS name (tên DNS khu vực) của S3 interface endpoint
-1. Trong Amazon VPC menu, chọn Endpoints.
+#### Xác minh Tài nguyên
 
-2. Click tên của endpoint chúng ta mới tạo ở mục 4.2: s3-interface-endpoint. Click details và lưu lại regional DNS name của endpoint (cái đầu tiên) vào text-editor của bạn để dùng ở các bước sau.
+Sau khi triển khai, xác minh rằng tất cả tài nguyên đã được tạo thành công:
 
-![dns name](/images/5-Workshop/5.4-S3-onprem/dns.png)
+##### 1. Kiểm tra VPC
 
-#### Kết nối đến EC2 instance ở trong "VPC On-prem" (giả lập môi trường truyền thống)
-
-1. Đi đến **Session manager** bằng cách gõ "session manager" vào ô tìm kiếm
-
-2. Click **Start Session**, chọn EC2 instance có tên **Test-Interface-Endpoint**. EC2 instance này đang chạy trên "VPC On-prem" và sẽ được sử dụng để kiểm tra kết nối đến Amazon S3 thông qua Interface endpoint. Session Manager sẽ mở 1 browser tab mới với shell prompt: **sh-4.2 $**
-
-![Start session](/images/5-Workshop/5.4-S3-onprem/start-session.png)
-
-3. Đi đến ssm-user's home directory với lệnh "cd ~"
-
-4. Tạo 1 file tên testfile2.xyz
-```
-fallocate -l 1G testfile2.xyz
+```bash
+aws ec2 describe-vpcs --filters "Name=tag:Project,Values=mapvibe"
 ```
 
-![user](/images/5-Workshop/5.4-S3-onprem/cli1.png)
+##### 2. Kiểm tra RDS
 
-5. Copy file vào S3 bucket mình tạo ở section 4.2
+```bash
+aws rds describe-db-instances --query "DBInstances[?contains(DBInstanceIdentifier, 'mapvibe')]"
 ```
-aws s3 cp --endpoint-url https://bucket.<Regional-DNS-Name> testfile2.xyz s3://<your-bucket-name>
-``` 
-+ Câu lệnh này yêu cầu thông số --endpoint-url, bởi vì bạn cần sử dụng DNS name chỉ định cho endpoint để truy cập vào S3 thông qua Interface endpoint.
-+ Không lấy ' * ' khi copy/paste tên DNS khu vực.
-+ Cung cấp tên S3 bucket của bạn
 
-![copy file](/images/5-Workshop/5.4-S3-onprem/cli2.png)
+##### 3. Kiểm tra Lambda Functions
 
-Bây giờ tệp đã được thêm vào bộ chứa S3 của bạn. Hãy kiểm tra bộ chứa S3 của bạn trong bước tiếp theo.
+```bash
+aws lambda list-functions --query "Functions[?contains(FunctionName, 'mapvibe')]"
+```
 
-#### Kiểm tra Object trong S3 bucket
+##### 4. Kiểm tra API Gateway
 
-1. Đi đến S3 console
-2. Click Buckets
-3. Click tên bucket của bạn và bạn sẽ thấy testfile2.xyz đã được thêm vào s3 bucket của bạn
+```bash
+aws apigateway get-rest-apis --query "items[?contains(name, 'mapvibe')]"
+```
 
-![check bucket](/images/5-Workshop/5.4-S3-onprem/check-bucket.png)
+##### 5. Kiểm tra CloudFront
 
+```bash
+aws cloudfront list-distributions --query "DistributionList.Items[?contains(Aliases.Items[0], 'mapvibe')]"
+```
 
+##### 6. Kiểm tra Cognito
 
+```bash
+aws cognito-idp list-user-pools --max-results 10 --query "UserPools[?contains(Name, 'mapvibe')]"
+```
 
+##### 7. Kiểm tra S3 Buckets
+
+```bash
+aws s3 ls | grep mapvibe
+```
+
+#### Kiểm tra API Endpoint
+
+Kiểm tra API Gateway endpoint:
+
+```bash
+# Lấy API Gateway URL từ Terraform output
+API_URL=$(terraform output -raw api_gateway_url)
+
+# Kiểm tra health endpoint (nếu có)
+curl $API_URL/health
+```
+
+#### Kiểm tra Kết nối Database
+
+Lấy credentials database và kiểm tra kết nối:
+
+```bash
+# Lấy secret ARN
+SECRET_ARN=$(terraform output -raw db_secret_arn)
+
+# Lấy credentials
+aws secretsmanager get-secret-value --secret-id $SECRET_ARN
+
+# Kiểm tra kết nối (yêu cầu psql)
+# Sử dụng credentials từ secret để kết nối
+```
+
+#### Xác minh CloudFront Distribution
+
+Kiểm tra trạng thái CloudFront distribution:
+
+```bash
+DIST_ID=$(terraform output -raw cloudfront_distribution_id)
+aws cloudfront get-distribution --id $DIST_ID
+```
+
+Đợi trạng thái là "Deployed" trước khi truy cập trang web.

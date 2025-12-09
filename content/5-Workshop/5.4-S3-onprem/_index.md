@@ -1,20 +1,33 @@
 ---
-title : "Access S3 from on-premises"
-date : "2025-09-11"
+title : "Infrastructure Setup"
+date: 2025-09-09
 weight : 4
 chapter : false
 pre : " <b> 5.4. </b> "
+
 ---
 
 #### Overview
 
-+ In this section, you will create an Interface endpoint to access Amazon S3 from a simulated on-premises environment. The Interface endpoint will allow you to route to Amazon S3 over a VPN connection from your simulated on-premises environment.
+In this section, you will set up the AWS infrastructure for MapVibe using Terraform. The infrastructure includes:
 
-+ Why using **Interface endpoint**: 
-    + Gateway endpoints only work with resources running in the VPC where they are created. Interface endpoints work with resources running in VPC, and also resources running in on-premises environments. Connectivty from your on-premises environment to the cloud can be provided by AWS Site-to-Site VPN or AWS Direct Connect.
-    + Interface endpoints allow you to connect to services powered by AWS PrivateLink. These services include some AWS services, services hosted by other AWS customers and partners in their own VPCs (referred to as PrivateLink Endpoint Services), and supported AWS Marketplace Partner services. For this workshop, we will focus on connecting to Amazon S3.
+- **VPC and Networking** - Virtual Private Cloud with subnets and security groups
+- **RDS PostgreSQL** - Database for storing application data
+- **Lambda Functions** - Serverless compute for API and processing
+- **API Gateway** - REST API endpoint management
+- **CloudFront & S3** - CDN and static asset storage
+- **Cognito** - User authentication and authorization
+- **Route53 & ACM** - DNS and SSL certificate management
+- **WAF** - Web Application Firewall for security
+- **Secrets Manager** - Secure credential storage
 
-![Interface endpoint architecture](/images/5-Workshop/5.4-S3-onprem/diagram3.png)
+#### Terraform Configuration
 
+The infrastructure is defined in `infrastructure/terraform/` using Terraform modules for each AWS service.
 
+#### Content
 
+- [Terraform Setup](5.4.1-prepare/)
+- [Deploy Infrastructure](5.4.2-create-interface-enpoint/)
+- [Verify Deployment](5.4.3-test-endpoint/)
+- [Configure Services](5.4.4-dns-simulation/)

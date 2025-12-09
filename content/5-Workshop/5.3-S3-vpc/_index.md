@@ -1,18 +1,84 @@
 ---
-title : "Access S3 from VPC"
-date : "2025-09-11"
+title : "Project Structure"
+date: 2025-09-09
 weight : 3
 chapter : false
 pre : " <b> 5.3. </b> "
+
 ---
 
-#### Using Gateway endpoint
+#### Monorepo Architecture
 
-In this section, you will create **a Gateway eendpoint** to access **Amazon S3** from **an EC2 instance**. **The Gateway endpoint** will allow upload an object to S3 buckets without using **the Public Internet**. To create an endpoint, you must specify the VPC in which you want to create the endpoint, and the service (in this case, S3) to which you want to establish the connection.
+MapVibe uses a **monorepo** architecture managed by **TurboRepo** and **Bun**. This allows for:
+- Shared code and dependencies across multiple applications
+- Efficient builds with caching
+- Consistent tooling and configurations
+- Simplified dependency management
 
-![overview](/images/5-Workshop/5.3-S3-vpc/diagram2.png)
+#### Directory Structure
+
+```
+mapvibe/
+├── apps/                    # Applications
+│   ├── web/                 # Main frontend application
+│   ├── admin/               # Admin dashboard
+│   └── api/                 # Backend API Lambda function
+├── packages/                # Shared packages
+│   ├── types/               # TypeScript type definitions
+│   ├── ui-components/       # Shared React components
+│   ├── database/            # Database layer (Kysely)
+│   ├── api-functions/       # Shared API utilities
+│   ├── utils/               # Common utilities
+│   └── constants/           # Shared constants
+├── infrastructure/          # Infrastructure as Code
+│   ├── terraform/           # Terraform configurations
+│   │   ├── main.tf          # Main configuration
+│   │   └── modules/         # Terraform modules
+│   └── s3-cloudfront/       # S3 and CloudFront configs
+├── scripts/                 # Deployment and build scripts
+├── package.json             # Root package configuration
+├── turbo.json               # TurboRepo configuration
+└── tsconfig.json            # TypeScript configuration
+```
+
+#### Applications
+
+1. **`apps/web`** - Main user-facing web application
+   - Built with React 19, Vite, and TailwindCSS
+   - Features: Search, place discovery, reviews, user profiles
+   - Deployed to S3 + CloudFront
+
+2. **`apps/admin`** - Admin dashboard
+   - Built with React 19, Vite, and TailwindCSS
+   - Features: Content moderation, analytics, user management
+   - Deployed to separate S3 + CloudFront
+
+3. **`apps/api`** - Main API Lambda function
+   - Handles REST API endpoints
+   - Integrates with RDS, S3, Cognito, Bedrock
+   - Built with TypeScript and Node.js
+
+#### Shared Packages
+
+- **`packages/types`** - Shared TypeScript types and interfaces
+- **`packages/ui-components`** - Reusable React UI components
+- **`packages/database`** - Database access layer using Kysely
+- **`packages/utils`** - Common utility functions
+- **`packages/constants`** - Application constants
+
+#### Infrastructure
+
+The `infrastructure/` directory contains Terraform modules for:
+- VPC and networking
+- RDS PostgreSQL database
+- Lambda functions (API, embeddings, RAG, OCR, Rekognition, etc.)
+- API Gateway
+- CloudFront and S3
+- Cognito User Pool
+- Route53 and ACM
+- WAF
 
 #### Content
 
-- [Create gateway endpoint](3.1-create-gwe/)
-- [Test gateway endpoint](3.2-test-gwe/)
+- [Monorepo Setup](5.3.1-create-gwe/)
+- [Application Details](5.3.2-test-gwe/)

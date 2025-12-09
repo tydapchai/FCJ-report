@@ -1,43 +1,98 @@
 ---
-title : "Create an S3 Interface endpoint"
-date : "2025-09-11"
+title : "Deploy Infrastructure"
+date: 2025-09-09
 weight : 2
 chapter : false
 pre : " <b> 5.4.2 </b> "
+
 ---
 
-In this section you will create and test an S3 interface endpoint using the simulated on-premises environment deployed as part of this workshop.
+#### Deploy with Terraform
 
-1. Return to the Amazon VPC menu. In the navigation pane, choose Endpoints, then click Create Endpoint.
+Deploy the infrastructure:
 
-2. In Create endpoint console:
-+ Name the interface endpoint
-+ In Service category, choose **aws services** 
+```bash
+cd infrastructure/terraform
+terraform apply
+```
 
-![name](/images/5-Workshop/5.4-S3-onprem/s3-interface-endpoint1.png)
+This will create all AWS resources. The process may take 15-30 minutes.
 
-3.  In the Search box, type S3 and press Enter. Select the endpoint named com.amazonaws.us-east-1.s3. Ensure that the Type column indicates Interface.
+#### What Gets Created
 
-![service](/images/5-Workshop/5.4-S3-onprem/s3-interface-endpoint2.png)
+The Terraform configuration creates:
 
-4. For VPC, select VPC Cloud from the drop-down.
-{{% notice warning %}}
-Make sure to choose "VPC Cloud" and not "VPC On-prem"
-{{% /notice %}}
-+ Expand **Additional settings** and ensure that Enable DNS name is *not* selected (we will use this in the next part of the workshop)
+1. **VPC Module**
+   - VPC with public subnets
+   - Internet Gateway
+   - Route tables
+   - Security groups
 
-![vpc](/images/5-Workshop/5.4-S3-onprem/s3-interface-endpoint3.png)
+2. **RDS Module**
+   - PostgreSQL database instance (db.t3.micro)
+   - Database credentials stored in Secrets Manager
+   - Public accessibility (for MVP)
 
-5. Select 2 subnets in the following AZs: us-east-1a and us-east-1b
+3. **Secrets Manager**
+   - Database credentials secret
+   - Auto-generated secure password
 
-![subnets](/images/5-Workshop/5.4-S3-onprem/s3-interface-endpoint4.png)
+4. **Cognito Module**
+   - User Pool for authentication
+   - User Pool Client
+   - Custom domain (login.mapvibe.site)
+   - Optional Google OAuth integration
 
-6. For Security group, choose SGforS3Endpoint:
+5. **Lambda Functions**
+   - API Lambda (main REST API)
+   - Embeddings Lambda (Bedrock integration)
+   - RAG Lambda (AI search)
+   - OCR Menu Lambda (Textract)
+   - Rekognition Lambda (content moderation)
+   - Review Aggregate Lambda
+   - S3 Trigger Lambda
+   - Migration Lambda
 
-![sg](/images/5-Workshop/5.4-S3-onprem/s3-interface-endpoint5.png)
+6. **API Gateway**
+   - REST API with custom domain
+   - Lambda integrations
+   - Cognito authorizers
+   - CORS configuration
 
-7. Keep the default policy - full access and click Create endpoint
+7. **S3 & CloudFront**
+   - S3 bucket for static assets
+   - S3 bucket for photos
+   - CloudFront distribution
+   - WAF integration
+   - Custom domain (mapvibe.site)
 
-![success](/images/5-Workshop/5.4-S3-onprem/s3-interface-endpoint-success.png)
+8. **Route53 & ACM**
+   - Hosted zone for domain
+   - SSL certificates
+   - DNS records
 
-Congratulation on successfully creating S3 interface endpoint. In the next step, we will test the interface endpoint.
+9. **WAF**
+   - Web ACL for CloudFront
+   - Security rules
+
+#### Monitor Deployment
+
+Watch the Terraform output for progress. You'll see:
+- Resources being created
+- Any errors or warnings
+- Output values (URLs, ARNs, etc.)
+
+#### Save Outputs
+
+After deployment, save the outputs:
+
+```bash
+terraform output > outputs.txt
+```
+
+Important outputs include:
+- API Gateway URL
+- CloudFront URLs
+- Cognito User Pool ID
+- RDS endpoint
+- Database secret ARN

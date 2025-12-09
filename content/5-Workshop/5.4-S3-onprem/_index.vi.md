@@ -1,20 +1,33 @@
 ---
-title : "Truy cập S3 từ môi trường truyền thống"
-date :  "2025-09-11" 
-weight : 4 
+title : "Thiết lập Hạ tầng"
+date: 2025-09-09
+weight : 4
 chapter : false
 pre : " <b> 5.4. </b> "
+
 ---
 
 #### Tổng quan
 
-+ Trong phần này, bạn sẽ tạo một Interface Endpoint để truy cập Amazon S3 từ môi trường truyền thống mô phỏng. Interface Endpoint sẽ cho phép bạn định tuyến đến Amazon S3 qua kết nối VPN từ môi trường truyền thống mô phỏng của bạn.
+Trong phần này, bạn sẽ thiết lập hạ tầng AWS cho MapVibe sử dụng Terraform. Hạ tầng bao gồm:
 
-+ Tại sao nên sử dụng **Interface Endpoint**:
-    + Các Gateway endpoints chỉ hoạt động với các tài nguyên đang chạy trong VPC nơi chúng được tạo. Interface Endpoint  hoạt động với tài nguyên chạy trong VPC và cả tài nguyên chạy trong môi trường truyền thống. Khả năng kết nối từ môi trường truyền thống của bạn với aws cloud có thể được cung cấp bởi AWS Site-to-Site VPN hoặc AWS Direct Connect.
-    + Interface Endpoint cho phép bạn kết nối với các dịch vụ do AWS PrivateLink cung cấp. Các dịch vụ này bao gồm một số dịch vụ AWS, dịch vụ do các đối tác và khách hàng AWS lưu trữ trong VPC của riêng họ (gọi tắt là Dịch vụ PrivateLink endpoints) và các dịch vụ Đối tác AWS Marketplace. Đối với workshop này, chúng ta sẽ tập trung vào việc kết nối với Amazon S3.
-    
-![Interface endpoint architecture](/images/5-Workshop/5.4-S3-onprem/diagram3.png)
+- **VPC và Networking** - Virtual Private Cloud với subnets và security groups
+- **RDS PostgreSQL** - Cơ sở dữ liệu để lưu trữ dữ liệu ứng dụng
+- **Lambda Functions** - Serverless compute cho API và xử lý
+- **API Gateway** - Quản lý REST API endpoints
+- **CloudFront & S3** - CDN và lưu trữ tài sản tĩnh
+- **Cognito** - Xác thực và ủy quyền người dùng
+- **Route53 & ACM** - Quản lý DNS và chứng chỉ SSL
+- **WAF** - Tường lửa ứng dụng web cho bảo mật
+- **Secrets Manager** - Lưu trữ credentials an toàn
 
+#### Cấu hình Terraform
 
+Hạ tầng được định nghĩa trong `infrastructure/terraform/` sử dụng các module Terraform cho mỗi dịch vụ AWS.
 
+#### Nội dung
+
+- [Thiết lập Terraform](5.4.1-prepare/)
+- [Triển khai Hạ tầng](5.4.2-create-interface-enpoint/)
+- [Xác minh Triển khai](5.4.3-test-endpoint/)
+- [Cấu hình Dịch vụ](5.4.4-dns-simulation/)
